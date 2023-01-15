@@ -1,11 +1,12 @@
-import { FC, FunctionComponent, ReactElement, useId, useMemo } from 'react'
-
-type MyComp = <T>(props: T) => JSX.Element | null
-interface MyCompParams extends Parameters<MyComp> {}
+import { FC, JSXElementConstructor, useId, useMemo } from 'react'
+import { ComponentProps } from 'react'
+interface GenericModel {
+    [key: string]: string | number | undefined
+}
 interface MapperProps {
-    MyComp: MyComp
-    model: MyCompParams
-    data: Array<MyCompParams>
+    MyComp: (props: ComponentProps<any>) => JSX.Element
+    model: ComponentProps<any>
+    data: Array<ComponentProps<any>>
 }
 
 export const Mapper: FC<MapperProps> = ({
@@ -15,7 +16,9 @@ export const Mapper: FC<MapperProps> = ({
 }: MapperProps) => {
     const uniq = useId()
     const isProperData = useMemo(() => {
-        return data.every((item: MyCompParams) => item as typeof model)
+        return model && data
+            ? data.every((item: typeof model) => item as typeof model)
+            : false
     }, [model, data])
 
     if (!isProperData) {
@@ -23,9 +26,10 @@ export const Mapper: FC<MapperProps> = ({
     } else {
         return (
             <>
-                {data.map((item: typeof model, idx: number) => (
-                    <MyComp key={`mapped_${idx}_${uniq}`} {...item} />
-                ))}
+                {data &&
+                    data.map((item: typeof model, idx: number) => (
+                        <MyComp key={`mapped_${idx}_${uniq}`} {...item} />
+                    ))}
             </>
         )
     }
