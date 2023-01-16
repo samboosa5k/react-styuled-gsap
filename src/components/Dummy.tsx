@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Wrapper as ListContainer } from './utility'
-import { Mapper } from './utility/Mapper'
+import { Mapper, ModelType, MyModel } from './utility/Mapper'
 
 const model = { keyString: '' }
 
-const data: Array<typeof model> = [
+const data: Array<MyModel<typeof model>> = [
     {
         keyString: 'keyString_1',
     },
@@ -19,7 +19,7 @@ const data: Array<typeof model> = [
     },
 ]
 
-const ListItem = (props: typeof model) => <li>{JSON.stringify(props)}</li>
+const ListItem = (props: MyModel<typeof model>) => <li>{JSON.stringify(props)}</li>
 
 export const DummyList: FC = () => (
     <ListContainer as="ul">

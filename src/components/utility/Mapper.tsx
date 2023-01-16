@@ -1,9 +1,19 @@
 import { ComponentProps, FC, useId, useMemo } from 'react'
 
+export type MyModel<K extends string> = {
+    [key in K]: MyModel<K>
+}
+declare const model: { [Key in string]: string | typeof model }
+export type ModelType = typeof model
+declare function fcReact(props: ModelType): JSX.Element
+type FCX<P extends ModelType> = typeof fcReact extends FC<P>
+    ? (props: P) => JSX.Element
+    : null
+
 interface MapperProps {
-    MyComp: (props: ComponentProps<any>) => JSX.Element
-    model: ComponentProps<any>
-    data: Array<ComponentProps<any>>
+    MyComp: typeof fcReact
+    model: ModelType
+    data: Array<ModelType>
 }
 
 export const Mapper: FC<MapperProps> = ({
@@ -14,7 +24,7 @@ export const Mapper: FC<MapperProps> = ({
     const uniq = useId()
     const isProperData = useMemo(() => {
         return model && data
-            ? data.every((item: typeof model) => item as typeof model)
+            ? data.every((item: ModelType) => item as ModelType)
             : false
     }, [model, data])
 
