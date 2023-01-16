@@ -1,8 +1,5 @@
-import { FC, JSXElementConstructor, useId, useMemo } from 'react'
-import { ComponentProps } from 'react'
-interface GenericModel {
-    [key: string]: string | number | undefined
-}
+import { ComponentProps, FC, useId, useMemo } from 'react'
+
 interface MapperProps {
     MyComp: (props: ComponentProps<any>) => JSX.Element
     model: ComponentProps<any>

@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Mapper } from './utility/Mapper'
 import { Wrapper as ListContainer } from './utility'
+import { Mapper } from './utility/Mapper'
 
 const model = { keyString: '' }
 
@@ -21,7 +21,7 @@ const data: Array<typeof model> = [
 
 const ListItem = (props: typeof model) => <li>{JSON.stringify(props)}</li>
 
-const DummyList: FC = () => (
+export const DummyList: FC = () => (
     <ListContainer as="ul">
         <Mapper MyComp={ListItem} model={model} data={data} />
     </ListContainer>
