@@ -1,46 +1,171 @@
-# Getting Started with Create React App
+- This was ejected
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### CSS Sort Order
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```code
+content,
+position,
+z-index,
+top,
+right,
+bottom,
+left,
+align-content,
+align-items,
+align-self,
+flex,
+flex-flow,
+flex-basis,
+flex-direction,
+flex-grow,
+flex-shrink,
+flex-wrap,
+justify-content,
+float,
+clear,
+display,
+visibility,
+opacity,
+overflow,
+overflow-x,
+overflow-y,
+clip,
+zoom,
+transition,
+transition-delay,
+transition-timing-function,
+transition-duration,
+transition-property,
+transform,
+transform-origin,
+animation,
+animation-name,
+animation-duration,
+animation-play-state,
+animation-timing-function,
+animation-delay,
+animation-iteration-count,
+animation-direction,
+margin,
+margin-top,
+margin-right,
+margin-bottom,
+margin-left,
+box-decoration-break,
+box-shadow,
+border,
+border-width,
+border-style,
+border-color,
+border-top,
+border-top-width,
+border-top-style,
+border-top-color,
+border-right,
+border-right-width,
+border-right-style,
+border-right-color,
+border-bottom,
+border-bottom-width,
+border-bottom-style,
+border-bottom-color,
+border-left,
+border-left-width,
+border-left-style,
+border-left-color,
+border-radius,
+box-sizing,
+width,
+min-width,
+max-width,
+height,
+min-height,
+max-height,
+padding,
+padding-top,
+padding-right,
+padding-bottom,
+padding-left,
+table-layout,
+empty-cells,
+caption-side,
+border-spacing,
+border-collapse,
+border-top-left-radius,
+border-top-right-radius,
+border-bottom-right-radius,
+border-bottom-left-radius,
+border-image,
+border-image-source,
+border-image-slice,
+border-image-width,
+border-image-outset,
+border-image-repeat,
+outline,
+outline-width,
+outline-style,
+outline-color,
+outline-offset,
+order,
+list-style,
+list-style-position,
+list-style-type,
+list-style-image,
+quotes,
+counter-reset,
+counter-increment,
+resize,
+user-select,
+nav-index,
+nav-up,
+nav-right,
+nav-down,
+nav-left,
+background,
+background-color,
+background-image,
+background-repeat,
+background-attachment,
+background-position,
+background-position-x,
+background-position-y,
+background-clip,
+background-origin,
+background-size,
+cursor,
+pointer-events,
+font,
+font-family,
+font-size,
+font-weight,
+font-style,
+font-variant,
+font-size-adjust,
+font-stretch,
+line-height,
+text-align,
+text-align-last,
+vertical-align,
+white-space,
+text-decoration,
+text-emphasis,
+text-emphasis-color,
+text-emphasis-style,
+text-emphasis-position,
+text-indent,
+text-justify,
+text-shadow,
+letter-spacing,
+word-spacing,
+color,
+text-outline,
+text-transform,
+text-wrap,
+text-overflow,
+text-overflow-ellipsis,
+text-overflow-mode,
+word-wrap,
+word-break,
+tab-size,
+hyphens
+```
