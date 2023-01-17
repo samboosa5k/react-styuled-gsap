@@ -1,31 +1,18 @@
-import { ComponentProps, FC, useId, useMemo } from 'react'
+import { FC, useId, useMemo } from 'react'
+import { GenericGuard, GenericObject } from '../../@types'
 
-export type MyModel<K extends string> = {
-    [key in K]: MyModel<K>
-}
-declare const model: { [Key in string]: string | typeof model }
-export type ModelType = typeof model
-declare function fcReact(props: ModelType): JSX.Element
-type FCX<P extends ModelType> = typeof fcReact extends FC<P>
-    ? (props: P) => JSX.Element
-    : null
+export type ModelType = GenericObject
 
 interface MapperProps {
-    MyComp: typeof fcReact
+    Comp: (props: ModelType) => JSX.Element
     model: ModelType
     data: Array<ModelType>
 }
 
-export const Mapper: FC<MapperProps> = ({
-    MyComp,
-    model,
-    data,
-}: MapperProps) => {
+export const Mapper: FC<MapperProps> = ({ Comp, model, data }: MapperProps) => {
     const uniq = useId()
     const isProperData = useMemo(() => {
-        return model && data
-            ? data.every((item: ModelType) => item as ModelType)
-            : false
+        return GenericGuard<ModelType>(model)
     }, [model, data])
 
     if (!isProperData) {
@@ -34,8 +21,8 @@ export const Mapper: FC<MapperProps> = ({
         return (
             <>
                 {data &&
-                    data.map((item: typeof model, idx: number) => (
-                        <MyComp key={`mapped_${idx}_${uniq}`} {...item} />
+                    data.map((item: ModelType, idx: number) => (
+                        <Comp key={`mapped_${idx}_${uniq}`} {...item} />
                     ))}
             </>
         )

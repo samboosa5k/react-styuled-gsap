@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentMeta } from '@storybook/react'
 
-import { DummyList } from './Dummy'
+import { DummyList } from './DummyList'
 
 export default {
     title: 'DummyList',

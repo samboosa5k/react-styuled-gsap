@@ -1,5 +1,5 @@
 export * from './blocks'
 export * from './elements'
-export * from './modules'
+export * from '../modules'
 export * from './utility'
-export * from './Dummy'
+export * from '../modules/DummyList'
