@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Wrapper as ListContainer } from '../components/utility'
-import { Mapper, ModelType } from '../components/utility/Mapper'
+import { Mapper } from '../components/utility/Mapper'
 
-const model = { keyString: 'no key value provided' } as ModelType
+const model = { keyString: 'no key value provided' }
 
 const data = [
     {
@@ -19,7 +19,7 @@ const data = [
     },
 ]
 
-const ListItem = (props: ModelType) => <li>{JSON.stringify(props)}</li>
+const ListItem = (props: { keyString: string }) => <li>{JSON.stringify(props)}</li>
 
 export const DummyList: FC = () => (
     <ListContainer as="ul">

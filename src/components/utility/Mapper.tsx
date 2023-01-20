@@ -1,18 +1,16 @@
 import { FC, useId, useMemo } from 'react';
-import { GenericGuard, GenericObject } from '../../@types';
-
-export type ModelType = GenericObject;
+import { GenericDataObject, GenericGuard } from '../../@types';
 
 interface MapperProps {
-    Comp: (props: ModelType) => JSX.Element;
-    model: ModelType;
-    data: Array<ModelType>;
+    model: GenericDataObject;
+    data: Array<MapperProps['model']>;
+    Comp: <T extends MapperProps['model']>(props: T) => JSX.Element;
 }
 
 export const Mapper: FC<MapperProps> = ({ Comp, model, data }: MapperProps) => {
     const uniq = useId();
     const isProperData = useMemo(() => {
-        return GenericGuard<ModelType>(model);
+        return GenericGuard<typeof model>(data[0]);
     }, [model]);
 
     if (!isProperData) {
@@ -21,7 +19,7 @@ export const Mapper: FC<MapperProps> = ({ Comp, model, data }: MapperProps) => {
         return (
             <>
                 {data &&
-                    data.map((item: ModelType, idx: number) => (
+                    data.map((item: typeof model, idx: number) => (
                         <Comp key={`mapped_${idx}_${uniq}`} {...item} />
                     ))}
             </>
