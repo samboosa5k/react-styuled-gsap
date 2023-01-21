@@ -1,8 +1,11 @@
-import { FC } from 'react'
-import { Wrapper as ListContainer } from '../components/utility'
-import { Mapper } from '../components/utility/Mapper'
+import { FC } from 'react';
+import { GenericDataObject } from '../@types';
+import { Wrapper as ListContainer } from '../components/utility';
+import { Mapper } from '../components/utility/Mapper';
 
-const model = { keyString: 'no key value provided' }
+interface Model extends GenericDataObject<'keyString'> {}
+
+declare const model: Model;
 
 const data = [
     {
@@ -17,12 +20,12 @@ const data = [
     {
         keyString: 'keyString_4',
     },
-]
+];
 
-const ListItem = (props: { keyString: string }) => <li>{JSON.stringify(props)}</li>
+const ListItem = (props: Model) => <li>{JSON.stringify(props)}</li>;
 
 export const DummyList: FC = () => (
     <ListContainer as="ul">
         <Mapper Comp={ListItem} model={model} data={data} />
     </ListContainer>
-)
+);
