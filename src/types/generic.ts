@@ -1,9 +1,16 @@
 export type GenericValue = string | number | symbol;
+
 export type GenericFunction = <P extends unknown>(args?: P) => unknown;
 export type GenericObjectKeyValue = NonNullable<GenericValue | GenericFunction>;
 
+export type GenericObject = Record<GenericValue, GenericObjectKeyValue>;
+
 export type GenericDataObject<K extends GenericValue> = {
     [key in K]: GenericObjectKeyValue | GenericDataObject<GenericValue>;
+};
+
+export type GenericInferred<T, K extends keyof T> = {
+    [key in T as GenericValue]: T[K];
 };
 
 /**
@@ -18,9 +25,7 @@ export type GenericDataObject<K extends GenericValue> = {
  * @param arg - GenericDataObject<GenericValue>
  * @return boolean
  */
-export function GenericGuard<T extends GenericDataObject<GenericValue>>(
-    arg: T
-): arg is T {
+export function GenericGuard<T extends GenericObject>(arg: T): arg is T {
     return Object.keys(arg as T).every(
         (key: GenericValue): boolean => key in arg
     );
