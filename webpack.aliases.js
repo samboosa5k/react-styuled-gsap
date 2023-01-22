@@ -10,6 +10,9 @@ const { createWebpackAliases } = require('./webpack.helpers');
 module.exports = createWebpackAliases({
     '@assets': 'assets',
     '@src': 'src',
+    '@/types': 'src/types',
+    '@/utils': 'src/utils',
     '@components': 'src/components',
-    '@types': 'src/types',
+    '@/modules': 'src/modules',
+    '@/layout': 'src/layout',
 });

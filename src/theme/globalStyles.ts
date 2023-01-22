@@ -1,12 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
-import { colors, spacing, typography, borders } from './styles'
+import { ThemeProps } from '@/theme';
 
-export const GlobalStyle = createGlobalStyle`
-    ${spacing}
-    ${borders}
-    ${colors}
-    ${typography}
+import { createGlobalStyle } from 'styled-components';
 
+export const GlobalStyle = createGlobalStyle<ThemeProps>`
     @font-face {
         font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-style: normal;
@@ -15,8 +11,10 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     // Shameless rip of Bootstrap v5.1.3 variables
-    // ( Used by www.kde.org )
     body {
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         --text-color: #232629;
         --background-color: #fcfcfc;
         --background-color-transparent: rgb(252, 252, 252, 0.8);
@@ -31,6 +29,9 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-text-size-adjust: 100%;
         -webkit-tap-highlight-color: transparent
     }
-`
-
-export default GlobalStyle
+    
+    ${(props: ThemeProps) => (props?.borders ? props.borders : '')} 
+    ${(props: ThemeProps) => (props?.colors ? props.colors : '')} 
+    ${(props: ThemeProps) => (props?.spacing ? props.spacing : '')} 
+    ${(props: ThemeProps) => (props?.typography ? props.typography : '')} 
+`;

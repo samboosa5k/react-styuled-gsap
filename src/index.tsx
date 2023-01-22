@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import GlobalStyle from './globalStyles';
-
-// import './index.css'
+import Theme, { GlobalStyle } from './theme';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <GlobalStyle />
+        <GlobalStyle {...Theme} />
         <App />
     </React.StrictMode>
 );

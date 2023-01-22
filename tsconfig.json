@@ -18,17 +18,24 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "outDir": "public",
-        "types": ["./node_modules/@types", "./src/types"],
         "baseUrl": ".",
         "paths": {
             "*": ["./node_modules/*"],
             "@/*": ["./src/*"],
             "@src/*": ["./src/*"],
+            "@/types/*": ["./src/types/*"],
+            "@/utils/*": ["./src/utils/*"],
             "@components/*": ["./src/components/*"],
-            "@modules/*": ["./src/modules/*"],
-            "@types/*": ["./src/types/*"]
+            "@/modules/*": ["./src/modules/*"],
+            "@layout/*": ["./src/layout/*"],
+            "@theme/*": ["./src/theme/*"],
         }
     },
     "include": ["src/**/*"],
-    "exclude": ["node_modules", "public", "src/stories/**/*", "**/*.stories.tsx"]
+    "exclude": [
+        "node_modules",
+        "public",
+        "src/stories/**/*",
+        "**/*.stories.tsx"
+    ]
 }

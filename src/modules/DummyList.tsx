@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { GenericDataObject } from '@/types';
 
-import { GenericDataObject } from '@types';
+import { FC } from 'react';
 
 import { Wrapper as ListContainer } from '@components/utility';
 import { Mapper } from '@components/utility/Mapper';
