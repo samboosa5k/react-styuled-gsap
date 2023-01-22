@@ -1,5 +1,8 @@
-- This was ejected
+# React - Typescript - Styled Components - Gsap
 
+- Webpack boilerplate:
+    - https://github.com/codesbiome/react-webpack-typescript-2022
+    
 ### CSS Sort Order
 
 ```code

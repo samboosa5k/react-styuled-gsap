@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { GenericDataObject } from '../@types';
-import { Wrapper as ListContainer } from '../components/utility';
-import { Mapper } from '../components/utility/Mapper';
+
+import { GenericDataObject } from '@types';
+
+import { Wrapper as ListContainer } from '@components/utility';
+import { Mapper } from '@components/utility/Mapper';
 
 interface Model extends GenericDataObject<'keyString'> {}
 
 declare const model: Model;
 
-const data = [
+const data: Model[] = [
     {
         keyString: 'keyString_1',
     },

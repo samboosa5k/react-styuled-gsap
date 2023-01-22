@@ -1,5 +1,3 @@
-export * from './blocks'
-export * from './elements'
-export * from '../modules'
-export * from './utility'
-export * from '../modules/DummyList'
+export * from './blocks';
+export * from './elements';
+export { Wrapper, Mapper } from './utility';

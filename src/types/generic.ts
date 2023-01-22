@@ -1,8 +1,6 @@
 export type GenericValue = string | number | symbol;
-export type GenericFunction<P> = <P extends unknown>(args?: P) => unknown;
-export type GenericObjectKeyValue = NonNullable<
-    GenericValue | GenericFunction<unknown>
->;
+export type GenericFunction = <P extends unknown>(args?: P) => unknown;
+export type GenericObjectKeyValue = NonNullable<GenericValue | GenericFunction>;
 
 export type GenericDataObject<K extends GenericValue> = {
     [key in K]: GenericObjectKeyValue | GenericDataObject<GenericValue>;
@@ -20,28 +18,29 @@ export type GenericDataObject<K extends GenericValue> = {
  * @param arg - GenericDataObject<GenericValue>
  * @return boolean
  */
-function GenericGuard<T extends GenericDataObject<GenericValue>>(
+export function GenericGuard<T extends GenericDataObject<GenericValue>>(
     arg: T
 ): arg is T {
-    return Object.keys(arg as T).every((key) => key in arg);
+    return Object.keys(arg as T).every(
+        (key: GenericValue): boolean => key in arg
+    );
 }
 
 // Example bad data:
-const testData = {
-    sd: 1,
-    2: 'hello',
-};
+// const testData = {
+//     sd: 1,
+//     2: 'hello',
+// };
 
 // Inferred data to compare
-const compare = {
-    adf: 1,
-    2: '',
-};
+// const compare = {
+//     adf: 1,
+//     2: '',
+// };
 
 // Error: TS2345: Argument of type '{ sd: number; 2: string; }' is not assignable
 // to parameter of type '{ adf: number; 2: string; }'.
 // Property 'adf' is missing in type '{ sd: number; 2: string; }'
 // but required in type '{ adf: number; 2: string; }'.
-GenericGuard<typeof compare>(testData);
 
-export { GenericGuard };
+// GenericGuard<typeof compare>(testData);
