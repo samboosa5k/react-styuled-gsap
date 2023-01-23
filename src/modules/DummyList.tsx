@@ -1,17 +1,20 @@
-import { GenericDataObject } from '@/types';
-
-import { FC } from 'react';
-
+import { GenericInferred, GenericObject } from '@/types/generic';
 import { Wrapper as ListContainer } from '@components/utility';
 import { Mapper } from '@components/utility/Mapper';
 
-interface Model extends GenericDataObject<'keyString'> {}
+import { FC } from 'react';
 
-declare const model: Model;
+
+const model = {
+    keyString: '',
+} ;
+
+type ModelType = typeof model
+type Model = GenericInferred<ModelType>
 
 const data: Model[] = [
     {
-        keyString: 'keyString_1',
+        keyStr2ing: undefined
     },
     {
         keyString: 'keyString_2',

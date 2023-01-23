@@ -1,6 +1,8 @@
 import { useId, useMemo } from 'react';
 
-import { GenericDataObject, GenericGuard, GenericValue } from '../../types';
+import { GenericObject } from '@/types/generic';
+
+import { GenericGuard } from '../../types';
 
 /**
  * MapperProps --> Interface to deal with the reusable <Mapper>
@@ -8,7 +10,7 @@ import { GenericDataObject, GenericGuard, GenericValue } from '../../types';
  * match the structure of the "model" required by the component-prop.
  */
 interface MapperProps {
-    model: GenericDataObject<GenericValue>;
+    model: GenericObject;
     data: Array<MapperProps['model']>;
     Comp: <T extends MapperProps['model']>(props: T) => JSX.Element;
 }
@@ -24,8 +26,8 @@ interface MapperProps {
 export const Mapper = ({ Comp, model, data }: MapperProps) => {
     const uniq = useId();
     const isProperData = useMemo(() => {
-        return GenericGuard<typeof model>(data[0]);
-    }, [data]);
+        return data.some((item) => !GenericGuard<typeof model>(item));
+    }, [data, model]);
 
     if (!isProperData) {
         return null;

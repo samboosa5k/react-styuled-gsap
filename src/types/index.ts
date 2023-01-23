@@ -5,4 +5,4 @@ export type {
     GenericDataObject,
 } from './generic';
 
-export { GenericGuard } from './generic';
+export * from './guards'
