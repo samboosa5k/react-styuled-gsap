@@ -1,13 +1,17 @@
-import styled from 'styled-components';
-import { GridBase, GridDesktop, GridMobile } from './Grid';
+import GridArea from '@/layout/GridAreas';
 
-type GridTypes = typeof GridDesktop | typeof GridMobile;
+import { GridDesktop, GridLayout, GridProps } from './Grid';
 
-interface LayoutProps {
-    grid: GridTypes;
-}
-export const GridLayout = styled(GridBase)<LayoutProps>`
-    ${(props: LayoutProps) => props?.grid || null}
-`;
+interface AppProps extends GridProps {}
 
-export { GridLayout as AppLayout };
+export const AppLayout = ({ children }: AppProps) => (
+    <GridLayout grid={GridDesktop}>{children}</GridLayout>
+);
+
+AppLayout.Header = GridArea;
+AppLayout.NavBar = GridArea;
+AppLayout.Content = GridArea;
+AppLayout.SideBar = GridArea;
+AppLayout.Footer = GridArea;
+
+export default AppLayout;

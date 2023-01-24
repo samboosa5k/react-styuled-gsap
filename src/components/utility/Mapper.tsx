@@ -2,7 +2,10 @@ import { useId, useMemo } from 'react';
 
 import { GenericObject } from '@/types/generic';
 
-import { GenericGuard } from '../../types';
+import {
+    /*allDataValid,*/
+    GenericGuard,
+} from '../../types';
 
 /**
  * MapperProps --> Interface to deal with the reusable <Mapper>
@@ -25,19 +28,24 @@ interface MapperProps {
  */
 export const Mapper = ({ Comp, model, data }: MapperProps) => {
     const uniq = useId();
-    const isProperData = useMemo(() => {
-        return data.some((item) => !GenericGuard<typeof model>(item));
+    // const isProperData = useMemo(() => {
+    //     return allDataValid(model, data)
+    // }, [data, model]);
+
+    const filteredData = useMemo(() => {
+        return data.filter((item: typeof model) =>
+            GenericGuard<typeof model>(item)
+        );
     }, [data, model]);
 
-    if (!isProperData) {
+    if (!filteredData) {
         return null;
     } else {
         return (
             <>
-                {data &&
-                    data.map((item: MapperProps['model'], idx: number) => (
-                        <Comp key={`mapped_${idx}_${uniq}`} {...item} />
-                    ))}
+                {filteredData.map((item: typeof model, idx: number) => (
+                    <Comp key={`mapped_${idx}_${uniq}`} {...item} />
+                ))}
             </>
         );
     }

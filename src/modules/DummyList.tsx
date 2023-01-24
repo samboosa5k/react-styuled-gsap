@@ -9,8 +9,7 @@ const model = {
     keyString: '',
 } ;
 
-type ModelType = typeof model
-type Model = GenericInferred<ModelType>
+type Model = GenericObject & GenericInferred<typeof model | GenericObject>
 
 const data: Model[] = [
     {

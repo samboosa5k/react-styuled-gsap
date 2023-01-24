@@ -1,4 +1,4 @@
-import { GenericObject, GenericValue } from "./generic";
+import { GenericObject, GenericValue } from './generic';
 
 /**
  * GenericGuard --> accepts a basic object as an argument,
@@ -23,19 +23,16 @@ type ArrayPredicateFN = typeof checkEvery | typeof checkSome;
 const checkEvery = (data: GenericObject[]) => data.every;
 const checkSome = (data: GenericObject[]) => data.some;
 
-const checkDataTypeGuard =
-    (predicateFN: ArrayPredicateFN) => {
-        return (guardFN: typeof GenericGuard) => {
-            return (props: GenericObject, data: GenericObject[]) => {
-                return predicateFN(data)((item) => guardFN<typeof props>(item))
-            }
-        }
-    }
+const checkDataTypeGuard = (predicateFN: ArrayPredicateFN) => {
+    return (guardFN: typeof GenericGuard) => {
+        return (props: GenericObject, data: GenericObject[]) => {
+            return predicateFN(data)((item) => guardFN<typeof props>(item));
+        };
+    };
+};
 
-
-export const isAllDataCorrectType = checkDataTypeGuard(checkEvery)(GenericGuard)
-export const isSomeDataCorrectType = checkDataTypeGuard(checkSome)(GenericGuard)
-
+export const allDataValid = checkDataTypeGuard(checkEvery)(GenericGuard);
+export const someDataValid = checkDataTypeGuard(checkSome)(GenericGuard);
 
 // Example bad data:
 // const testData = {
