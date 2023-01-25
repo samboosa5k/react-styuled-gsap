@@ -1,17 +1,28 @@
 // import './App.css';
-import { GridMobile } from '@/layout/Grid';
-
 import { DummyList } from '@/modules';
 
-import UI, { AppLayout } from './layout';
+import UI, { AppContainer } from './layout';
 
 function App() {
     return (
-        <AppLayout grid={GridMobile}>
-            <UI.Content area="content">
+        <AppContainer>
+            <UI.Sidebar>
+                <h1>SIDEBAR</h1>
+            </UI.Sidebar>
+            <UI.Content>
+                <DummyList />
+                <DummyList />
+                <DummyList />
                 <DummyList />
             </UI.Content>
-        </AppLayout>
+            <UI.Header>
+                <h2>HEADER H2</h2>
+                <h2>HEADER H2</h2>
+                <h2>HEADER H2</h2>
+                <h2>HEADER H2</h2>
+                <h2>HEADER H2</h2>
+            </UI.Header>
+        </AppContainer>
     );
 }
 

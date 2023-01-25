@@ -1,17 +1,35 @@
-import GridArea from '@/layout/GridAreas';
+import { ReactNode } from 'react';
 
-import { GridDesktop, GridLayout, GridProps } from './Grid';
+import { GridArea, GridAreaElementType } from '@/layout/GridAreas';
 
-interface AppProps extends GridProps {}
+import { GridDesktop, GridLayout } from './Grid';
 
-export const AppLayout = ({ children }: AppProps) => (
-    <GridLayout grid={GridDesktop}>{children}</GridLayout>
-);
+interface AppProps {
+    children?: ReactNode;
+}
 
-AppLayout.Header = GridArea;
-AppLayout.NavBar = GridArea;
-AppLayout.Content = GridArea;
-AppLayout.SideBar = GridArea;
-AppLayout.Footer = GridArea;
+// Parent Wrapper
+export const AppContainer = ({ children }: AppProps) => {
+    return <GridLayout grid={GridDesktop}>{children}</GridLayout>;
+};
 
-export default AppLayout;
+// UI grid elements
+const UIBlock = ({ area, children }: GridAreaElementType) => {
+    return <GridArea area={area}>{children}</GridArea>;
+};
+
+// Child props
+const Header = (props: AppProps) => UIBlock({ area: 'header', ...props });
+
+const Navbar = (props: AppProps) => UIBlock({ area: 'navbar', ...props });
+
+const Content = (props: AppProps) => UIBlock({ area: 'content', ...props });
+
+const Sidebar = (props: AppProps) => UIBlock({ area: 'sidebar', ...props });
+
+AppContainer.Header = Header;
+AppContainer.Navbar = Navbar;
+AppContainer.Content = Content;
+AppContainer.Sidebar = Sidebar;
+
+export default AppContainer;
