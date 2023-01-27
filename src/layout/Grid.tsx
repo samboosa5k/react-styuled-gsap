@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { GridTemplate, GridTemplateProps } from '@layout/types';
 
 import styled, { css } from 'styled-components';
 
@@ -19,14 +19,7 @@ export const GridDesktop = css`
         'footer footer footer footer';
 `;
 
-export type GridTypes = typeof GridDesktop | typeof GridMobile;
-
-export interface GridProps {
-    grid: GridTypes;
-    children?: ReactNode;
-}
-
-export const GridBase = styled.div<GridProps>`
+export const GridBase = styled.div<GridTemplate>`
     position: absolute;
     inset: 0;
     display: grid;
@@ -34,6 +27,6 @@ export const GridBase = styled.div<GridProps>`
     ${({ grid }) => (grid === GridDesktop ? GridDesktop : GridMobile)}
 `;
 
-export const GridLayout = styled((props: GridProps) => (
+export const GridLayout = styled((props: GridTemplateProps) => (
     <GridBase grid={props.grid}>{props.children}</GridBase>
 ))``;

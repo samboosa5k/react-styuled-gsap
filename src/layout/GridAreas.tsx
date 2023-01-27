@@ -1,29 +1,16 @@
-import { ReactNode } from 'react';
+import { GridAreaProps, GridItemProps } from '@layout/types';
 
 import styled from 'styled-components';
 
-export type GridAreas =
-    | 'header'
-    | 'content'
-    | 'navbar'
-    | 'content'
-    | 'footer'
-    | 'sidebar';
-
-export type GridAreaElementType = {
-    children?: ReactNode;
-    area: GridAreas;
-};
-
-const GridAreaElement = styled.div<GridAreaElementType>`
+const GridItem = styled.div<GridItemProps>`
     grid-area: ${({ area }) => area};
     background-color: var(--teal);
 `;
 
-export const GridArea = styled(({ children, area }: GridAreaElementType) => {
+export const GridArea = styled(({ children, area }: GridAreaProps) => {
     return (
         <>
-            <GridAreaElement area={area}>{children}</GridAreaElement>
+            <GridItem area={area}>{children}</GridItem>
         </>
     );
 })``;

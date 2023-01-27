@@ -1,7 +1,8 @@
 // import './App.css';
-import { DummyList } from '@/modules';
+import * as UI from '@/layout/Layout';
+import { AppContainer } from '@/layout';
 
-import UI, { AppContainer } from './layout';
+import { DummyList } from '@/modules';
 
 function App() {
     return (
