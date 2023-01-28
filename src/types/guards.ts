@@ -1,20 +1,19 @@
-import { GenericObject, GenericValue } from './generic';
+import { GenericObject, GenericStringObject } from './generic';
 
 /**
  * GenericGuard --> accepts a basic object as an argument,
- * which it will then compare against a Type/Interface
- * or an inferred data-type for correctness.
+ * which it will then compare against an inferred input data-type
+ * for correct keys.
  *
  * Useful for validating/type-checking an array of live data
  * without needing complex logic to deal with this.
  *
- * @type {(arg: GenericDataObject<GenericValue>)=>boolean}
- * @param arg - GenericDataObject<GenericValue>
+ * @type {(arg:  GenericObject)=>boolean}
  * @return boolean
  */
-export function GenericGuard<T extends GenericObject>(arg: T): arg is T {
-    return Object.keys(arg as T).every(
-        (key: GenericValue): boolean => key in arg
+export function GenericGuard<T extends GenericStringObject>(arg: GenericObject): arg is T {
+    return Object.keys(arg).every(
+        (key): boolean => typeof (arg as T)[key] !== 'undefined'
     );
 }
 

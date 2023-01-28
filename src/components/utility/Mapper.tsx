@@ -33,9 +33,15 @@ export const Mapper = ({ Comp, model, data }: MapperProps) => {
     // }, [data, model]);
 
     const filteredData = useMemo(() => {
-        return data.filter((item: typeof model) =>
-            GenericGuard<typeof model>(item)
-        );
+        return data.reduce((acc: [] | typeof model[], item) => {
+            console.log('generic guard --> typeof model', typeof model);
+            console.log('generic guard --> is item',GenericGuard<typeof model>(item));
+            if (!GenericGuard<typeof model>(item)) {
+                return acc;
+            } else {
+                return [...acc, item];
+            }
+        }, []);
     }, [data, model]);
 
     if (!filteredData) {

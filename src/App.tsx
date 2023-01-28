@@ -1,28 +1,26 @@
-// import './App.css';
-import * as UI from '@/layout/Layout';
-import { AppContainer } from '@/layout';
-
 import { DummyList } from '@/modules';
+
+import { AppContainer } from './layout/Layout';
 
 function App() {
     return (
         <AppContainer>
-            <UI.Sidebar>
+            <AppContainer.Sidebar>
                 <h1>SIDEBAR</h1>
-            </UI.Sidebar>
-            <UI.Content>
+            </AppContainer.Sidebar>
+            <AppContainer.Content>
                 <DummyList />
                 <DummyList />
                 <DummyList />
                 <DummyList />
-            </UI.Content>
-            <UI.Header>
+            </AppContainer.Content>
+            <AppContainer.Header>
                 <h2>HEADER H2</h2>
                 <h2>HEADER H2</h2>
                 <h2>HEADER H2</h2>
                 <h2>HEADER H2</h2>
                 <h2>HEADER H2</h2>
-            </UI.Header>
+            </AppContainer.Header>
         </AppContainer>
     );
 }

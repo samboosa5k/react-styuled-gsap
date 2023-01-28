@@ -1,5 +1,4 @@
 import { GridDesktop, GridMobile } from '@layout/Grid';
-import { AppContainerChildType } from '@layout/Layout';
 
 import { ReactNode } from 'react';
 
@@ -8,7 +7,7 @@ type ContainerProps = {
     children: ChildType;
 };
 
-type GridArea =
+type GridAreaType =
     | 'header'
     | 'content'
     | 'navbar'
@@ -17,10 +16,12 @@ type GridArea =
     | 'sidebar';
 
 interface GridItemProps {
-    area: GridArea;
+    area: GridAreaType;
 }
 
-interface GridAreaProps extends ContainerProps, GridItemProps {}
+interface GridAreaProps extends ContainerProps, GridItemProps {
+    className?: string;
+}
 
 type GridType = typeof GridDesktop | typeof GridMobile;
 interface GridTemplate {
@@ -28,19 +29,12 @@ interface GridTemplate {
 }
 interface GridTemplateProps extends ContainerProps, GridTemplate {}
 
-interface AppContainerProps {
-    children: AppContainerChildType extends ChildType
-        ? AppContainerChildType
-        : ChildType;
-}
-
 export type {
     ChildType,
     ContainerProps,
-    GridArea,
+    GridAreaType,
     GridItemProps,
     GridAreaProps,
     GridTemplateProps,
     GridTemplate,
-    AppContainerProps,
 };

@@ -1,8 +1,8 @@
 export type GenericValue = string | number | symbol;
 
-type GenericStringObject = { [key: string]: GenericValue };
-type GenericNumberObject = { [key: number]: GenericValue };
-type GenericSymbolObject = { [key: number]: GenericValue };
+export type GenericStringObject = { [key: string]: GenericValue };
+export type GenericNumberObject = { [key: number]: GenericValue };
+export type GenericSymbolObject = { [key: number]: GenericValue };
 
 export type GenericFunction = <P extends unknown>(args?: P) => unknown;
 export type GenericObjectKeyValue = NonNullable<GenericValue | GenericFunction>;

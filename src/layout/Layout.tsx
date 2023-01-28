@@ -1,29 +1,9 @@
-import { AppContainerProps, ContainerProps } from '@layout/types';
-
-import { GridArea } from '@/layout/GridAreas';
+import { ContainerProps } from '@layout/types';
 
 import { GridDesktop, GridLayout } from './Grid';
+import { Content, Header, Navbar, Sidebar } from './GridItem';
 
-export const Header = ({ children }: ContainerProps) => (
-    <GridArea area={'header'}>{children}</GridArea>
-);
-export const Navbar = ({ children }: ContainerProps) => (
-    <GridArea area={'header'}>{children}</GridArea>
-);
-export const Content = ({ children }: ContainerProps) => (
-    <GridArea area={'header'}>{children}</GridArea>
-);
-export const Sidebar = ({ children }: ContainerProps) => (
-    <GridArea area={'header'}>{children}</GridArea>
-);
-
-export type AppContainerChildType =
-    | typeof Header
-    | typeof Navbar
-    | typeof Content
-    | typeof Sidebar;
-
-export const AppContainer = ({ children }: AppContainerProps) => {
+export const AppContainer = ({ children }: ContainerProps) => {
     return <GridLayout grid={GridDesktop}>{children}</GridLayout>;
 };
 

@@ -1,18 +1,15 @@
-import * as Vars from './vars';
+import { FlattenSimpleInterpolation } from 'styled-components';
 
-const Theme = {
-    borders: Vars.borders,
-    colors: Vars.colors,
-    spacing: Vars.spacing,
-    typography: Vars.typography,
-};
-export type ThemeType = typeof Theme;
-export type ThemeTypeKeys = keyof typeof Theme;
-export type ThemeTypeKeyValue<T extends ThemeTypeKeys> = typeof Theme[T];
+export enum ThemeKeys {
+    Borders = 'borders',
+    Colors = 'colors',
+    Spacing = 'spacing',
+    Typography = 'typography',
+}
 
 export type ThemeProps = {
-    [key in ThemeTypeKeys]: ThemeTypeKeyValue<ThemeTypeKeys>;
+    [key in ThemeKeys]: FlattenSimpleInterpolation;
 };
 
-export default Theme;
-export * from './globalStyles';
+export { GlobalStyle } from './globalStyles';
+export { borders, colors, spacing, typography } from './vars';

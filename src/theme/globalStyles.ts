@@ -1,6 +1,6 @@
-import { ThemeProps } from '@/theme';
-
 import { createGlobalStyle } from 'styled-components';
+
+import { ThemeProps } from '@/theme';
 
 export const GlobalStyle = createGlobalStyle<ThemeProps>`
     @font-face {
@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle<ThemeProps>`
 
     // Shameless rip of Bootstrap v5.1.3 variables
     body {
-
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         --text-color: #232629;
@@ -27,11 +26,21 @@ export const GlobalStyle = createGlobalStyle<ThemeProps>`
         text-align: var(--body-text-align);
         background-color: var(--body-bg);
         -webkit-text-size-adjust: 100%;
-        -webkit-tap-highlight-color: transparent
-    }
-    
-    ${(props: ThemeProps) => (props?.borders ? props.borders : '')} 
-    ${(props: ThemeProps) => (props?.colors ? props.colors : '')} 
-    ${(props: ThemeProps) => (props?.spacing ? props.spacing : '')} 
-    ${(props: ThemeProps) => (props?.typography ? props.typography : '')} 
+        -webkit-tap-highlight-color: transparent;
+
+        //  Global Theme Props
+        ${(props: ThemeProps) =>
+            `
+        //  Borders
+        ${(props?.borders && props.borders) || ''}
+        
+        //  Colors 
+        ${(props?.colors && props.colors) || ''}
+        
+        //  Spacing
+        ${(props?.spacing && props.spacing) || ''}
+        
+        //  Typography 
+        ${(props?.typography && props.typography) || ''}
+        `}
 `;
