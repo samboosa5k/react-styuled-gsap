@@ -6,8 +6,10 @@
 ### CSS Sort Order
 
 ```code
-content,
+display,
+visibility,
 position,
+content,
 z-index,
 top,
 right,
@@ -26,8 +28,6 @@ flex-wrap,
 justify-content,
 float,
 clear,
-display,
-visibility,
 opacity,
 overflow,
 overflow-x,
