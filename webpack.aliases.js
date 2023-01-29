@@ -12,7 +12,7 @@ module.exports = createWebpackAliases({
     '@src': 'src',
     '@/types': 'src/types',
     '@/utils': 'src/utils',
-    '@components': 'src/components',
+    '@/components': 'src/components',
     '@/modules': 'src/modules',
     '@/layout': 'src/layout',
 });
