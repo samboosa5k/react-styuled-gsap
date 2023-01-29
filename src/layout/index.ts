@@ -1,4 +1,4 @@
 export * from './types';
-export * from 'src/layout/AppContainer';
-export * from './Grid';
-export * from './types';
+export { AppContainer } from './AppContainer';
+export { GridLayout, GridMobile, GridDesktop } from './GridLayout';
+export { Header, Navbar, Content, Sidebar } from './InterfaceBlocks';

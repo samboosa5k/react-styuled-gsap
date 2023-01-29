@@ -1,4 +1,4 @@
-import { AppContainer } from '@layout/AppContainer';
+import { AppContainer } from '@/layout/AppContainer';
 
 import { DummyList } from '@/modules';
 

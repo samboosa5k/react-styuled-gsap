@@ -1,13 +1,13 @@
-import { ContainerProps, GridAreaProps, GridItemProps } from '@layout/types';
-
 import styled from 'styled-components';
+
+import { ContainerProps, GridAreaProps, GridItemProps } from './types';
 
 export const GridArea = styled.div<GridItemProps>`
     grid-area: ${({ area }) => area};
     background-color: var(--teal);
 `;
 
-export const GridItem = styled(
+export const InterfaceBlocks = styled(
     ({ area, children, className }: GridAreaProps) => {
         return (
             <GridArea className={className} area={area}>
@@ -18,9 +18,9 @@ export const GridItem = styled(
 )``;
 
 export const Header = ({ children }: ContainerProps) => (
-    <GridItem className={`app-grid-header`} area={'header'}>
+    <InterfaceBlocks className={`app-grid-header`} area={'header'}>
         {children}
-    </GridItem>
+    </InterfaceBlocks>
 );
 export const Navbar = ({ children }: ContainerProps) => (
     <GridArea className={`app-grid-navbar`} area={'navbar'}>
@@ -37,5 +37,3 @@ export const Sidebar = ({ children }: ContainerProps) => (
         {children}
     </GridArea>
 );
-
-export default GridItem;

@@ -1,7 +1,6 @@
-import { ContainerProps } from '@layout/types';
-
-import { GridDesktop, GridLayout } from './Grid';
-import { Content, Header, Navbar, Sidebar } from './GridItem';
+import { GridDesktop, GridLayout } from './GridLayout';
+import { Content, Header, Navbar, Sidebar } from './InterfaceBlocks';
+import { ContainerProps } from './types';
 
 export const AppContainer = ({ children }: ContainerProps) => {
     return <GridLayout grid={GridDesktop}>{children}</GridLayout>;

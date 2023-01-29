@@ -1,6 +1,6 @@
-import { GridTemplate, GridTemplateProps } from '@layout/types';
-
 import styled, { css } from 'styled-components';
+
+import { GridTemplate, GridTemplateProps } from './types';
 
 export const GridMobile = css`
     grid-template-areas:
@@ -19,7 +19,7 @@ export const GridDesktop = css`
         'footer footer footer footer';
 `;
 
-export const GridBase = styled.div<GridTemplate>`
+const GridBase = styled.div<GridTemplate>`
     position: absolute;
     inset: 0;
     display: grid;

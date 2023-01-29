@@ -1,19 +1,19 @@
-import { GenericInferred, GenericObject } from '@/types/generic';
-import { Wrapper as ListContainer } from '@components/utility';
-import { Mapper } from '@components/utility/Mapper';
-
 import { FC } from 'react';
 
+import { GenericInferred, GenericObject } from '@/types/generic';
+
+import { Mapper } from '@/components/utility/Mapper';
+import { Wrapper as ListContainer } from '@/components/utility/Wrapper';
 
 const model = {
     keyString: '',
-} ;
+};
 
-type Model = GenericObject & GenericInferred<typeof model | GenericObject>
+type Model = GenericObject & GenericInferred<typeof model | GenericObject>;
 
 const data: Model[] = [
     {
-        keyStr2ing: undefined
+        keyStr2ing: undefined,
     },
     {
         keyString: 'keyString_2',
