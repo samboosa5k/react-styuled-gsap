@@ -1,6 +1,6 @@
-import { DummyList } from '@/modules';
+import { AppContainer } from '@layout/AppContainer';
 
-import { AppContainer } from './layout/Layout';
+import { DummyList } from '@/modules';
 
 function App() {
     return (
