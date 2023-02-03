@@ -1,27 +1,28 @@
-import { AppContainer } from '@/layout/AppContainer';
+import {Layout}  from './layout';
 
 import { DummyList } from '@/modules';
 
 function App() {
     return (
-        <AppContainer>
-            <AppContainer.Sidebar>
-                <h1>SIDEBAR</h1>
-            </AppContainer.Sidebar>
-            <AppContainer.Content>
+        <Layout.Container>
+            <Layout.Sidebar>
+                <h4>SIDEBAR</h4>
+                <DummyList />
+            </Layout.Sidebar>
+            <Layout.Content>
+                <h5>Content area</h5>
                 <DummyList />
                 <DummyList />
                 <DummyList />
-                <DummyList />
-            </AppContainer.Content>
-            <AppContainer.Header>
-                <h2>HEADER H2</h2>
-                <h2>HEADER H2</h2>
-                <h2>HEADER H2</h2>
-                <h2>HEADER H2</h2>
-                <h2>HEADER H2</h2>
-            </AppContainer.Header>
-        </AppContainer>
+            </Layout.Content>
+            <Layout.Header>
+                <h2>Header/branding etc</h2>
+            </Layout.Header>
+            <Layout.Navbar>
+                <p>I am the navbar</p>
+                <button>I am a buton</button>
+            </Layout.Navbar>
+        </Layout.Container>
     );
 }
 

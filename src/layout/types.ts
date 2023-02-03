@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { GridDesktop, GridMobile } from './GridLayout';
+import { GridDesktop, GridMobile } from './Grid';
 
 type ChildType = ReactNode;
 type ContainerProps = {

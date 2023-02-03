@@ -12,7 +12,7 @@ export const GridMobile = css`
 
 export const GridDesktop = css`
     grid-template-areas:
-        'header navbar navbar navicon'
+        'header navbar navbar navbar'
         'subnav subnav subnav search'
         'sidebar content content content'
         'sidebar content content content'
@@ -27,6 +27,6 @@ const GridBase = styled.div<GridTemplate>`
     ${({ grid }) => (grid === GridDesktop ? GridDesktop : GridMobile)}
 `;
 
-export const GridLayout = styled((props: GridTemplateProps) => (
+export const Grid = styled((props: GridTemplateProps) => (
     <GridBase grid={props.grid}>{props.children}</GridBase>
 ))``;
