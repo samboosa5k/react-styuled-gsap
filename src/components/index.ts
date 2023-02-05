@@ -1,3 +1,3 @@
 export * from './blocks';
 export * from './elements';
-export { Wrapper, Mapper } from './utility';
+export { Wrapper } from './utility';

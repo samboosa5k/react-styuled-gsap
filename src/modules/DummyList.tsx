@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
-import { componentMapper } from '@/components/utility/Mapper';
+import { componentMapper } from '@/utils/componentMapper';
+
 import { Wrapper as ListContainer } from '@/components/utility/Wrapper';
 
 const model = {
