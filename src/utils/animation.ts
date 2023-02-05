@@ -2,6 +2,8 @@ import { gsap } from 'gsap';
 
 import { MutableRefObject, ReactNode, RefObject } from 'react';
 
+type AnimationTarget = MutableRefObject<ReactNode> | RefObject<ReactNode>;
+
 /**
  * This file should mark the start my gsap
  * journey with the motivation of eventually
@@ -13,10 +15,26 @@ import { MutableRefObject, ReactNode, RefObject } from 'react';
 const to = gsap.to;
 const from = gsap.from;
 
-const refPassthrough = (
-    target: MutableRefObject<ReactNode> | RefObject<ReactNode>
-) => {
+const refPassthrough = (target: AnimationTarget) => {
     return target.current;
+};
+
+type MoveX = { x: number };
+type MoveY = { y: number };
+type MoveXY = MoveX | MoveY | (MoveX & MoveY);
+
+type AnimationSequence = (arg: MoveXY[]) => void;
+
+const animation: AnimationSequence = (sequence: MoveXY[]) => {
+    const [begin, ...end] = sequence;
+
+    if (typeof begin === 'undefined') {
+        console.log('animation end');
+        return animation;
+    }
+
+    console.log(begin); // TODO: pass in gsap.to() or gsap.from()
+    return animation(end);
 };
 
 export { to, from, refPassthrough };
