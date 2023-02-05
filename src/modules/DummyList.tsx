@@ -1,19 +1,17 @@
 import { FC } from 'react';
 
-import { GenericInferred, GenericObject } from '@/types/generic';
-
-import { Mapper } from '@/components/utility/Mapper';
+import { componentMapper } from '@/components/utility/Mapper';
 import { Wrapper as ListContainer } from '@/components/utility/Wrapper';
 
 const model = {
     keyString: '',
 };
 
-type Model = GenericObject & GenericInferred<typeof model | GenericObject>;
+type Model = typeof model;
 
 const data: Model[] = [
     {
-        keyStr2ing: undefined,
+        keyString: 'data',
     },
     {
         keyString: 'keyString_2',
@@ -26,11 +24,10 @@ const data: Model[] = [
     },
 ];
 
-type Props = any;
-const ListItem = (props: Props) => <li>{props.keyString}</li>;
+const ListItem = (props: Model) => <li>{props.keyString}</li>;
 
 export const DummyList: FC = () => (
     <ListContainer as="ul">
-        <Mapper Comp={ListItem} model={model} data={data} />
+        {componentMapper(ListItem, model, data)}
     </ListContainer>
 );

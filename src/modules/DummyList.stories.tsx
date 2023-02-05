@@ -1,14 +1,12 @@
-import React from 'react'
+import { ComponentMeta } from '@storybook/react';
 
-import { ComponentMeta } from '@storybook/react'
-
-import { DummyList } from './DummyList'
+import { DummyList } from './DummyList';
 
 export default {
     title: 'DummyList',
     component: DummyList,
-} as ComponentMeta<typeof DummyList>
+} as ComponentMeta<typeof DummyList>;
 
-const Template = () => <DummyList />
+const Template = () => <DummyList />;
 
-export const Primary = Template.bind({})
+export const Primary = Template.bind({});

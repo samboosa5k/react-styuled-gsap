@@ -1,40 +1,31 @@
-import { useId, useMemo } from 'react';
+import { FC, ReactNode, useId, useMemo } from 'react';
 
-import { GenericObject } from '@/types/generic';
-
-import {
-    /*allDataValid,*/
-    GenericGuard,
-} from '../../types';
+import { GenericGuard } from '@/types';
+import { GenericStringObject } from '@/types/generic';
 
 /**
- * MapperProps --> Interface to deal with the reusable <Mapper>
- * component. TS will show errors when an item in the array of data does not
- * match the structure of the "model" required by the component-prop.
+ * componentMapper - The one-size-fits "most" list generator:
+ *
+ * Array of data provided will have "incorrect" data filtered out
+ * using a shallow comparison.
+ *
+ * @param  component  function that returns JSX and will map to the data array
+ * @param model  object to which the data list will be compared
+ * @param data list which will be fed to the input component
+ * @returns { null | JSX.Element }
  */
-interface MapperProps {
-    model: GenericObject;
-    data: Array<MapperProps['model']>;
-    Comp: <T extends any>(props: T) => JSX.Element;
-}
-
-/**
- * Mapper - The one-size-fits "most" list generator:
- * When React & Typescript work together to make magic happen
- * @param Comp
- * @param model
- * @param data
- * @constructor
- */
-export const Mapper = ({ Comp, model, data }: MapperProps) => {
+export const componentMapper = <
+    C extends FC<T>,
+    T extends GenericStringObject,
+    P extends T[]
+>(
+    component: C,
+    model: T,
+    data: P
+): null | ReactNode => {
     const uniq = useId();
-    // const isProperData = useMemo(() => {
-    //     return allDataValid(model, data)
-    // }, [data, model]);
-
     const filteredData = useMemo(() => {
         return data.reduce((acc: [] | typeof model[], item) => {
-            console.log('generic guard --> typeof model', typeof model);
             console.log(
                 'generic guard --> is item',
                 GenericGuard<typeof model>(item)
@@ -47,14 +38,15 @@ export const Mapper = ({ Comp, model, data }: MapperProps) => {
         }, []);
     }, [data, model]);
 
+    // If no data matches model <T>, return null
     if (!filteredData) {
         return null;
     } else {
         return (
             <>
-                {filteredData.map((item: typeof model, idx: number) => (
-                    <Comp key={`mapped_${idx}_${uniq}`} {...item} />
-                ))}
+                {filteredData.map((item: typeof model, idx: number) =>
+                    component({ key: `mapped_${uniq}_${idx}`, ...item })
+                )}
             </>
         );
     }
