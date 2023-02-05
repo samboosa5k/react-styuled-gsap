@@ -22,6 +22,9 @@ flex-grow,
 flex-shrink,
 flex-wrap,
 justify-content,
+
+[//]: # (GRID properties should be here as well.)
+
 float,
 clear,
 opacity,
