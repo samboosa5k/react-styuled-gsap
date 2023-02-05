@@ -1,4 +1,4 @@
-import { FC, ReactNode, useId, useMemo } from 'react';
+import { FC, Fragment, ReactNode, useId, useMemo } from 'react';
 
 import { GenericGuard } from '@/types';
 import { GenericStringObject } from '@/types/generic';
@@ -44,9 +44,11 @@ export const componentMapper = <
     } else {
         return (
             <>
-                {filteredData.map((item: typeof model, idx: number) =>
-                    component({ key: `mapped_${uniq}_${idx}`, ...item })
-                )}
+                {filteredData.map((item: typeof model, idx: number) => (
+                    <Fragment key={`mapped_${uniq}_${idx}`}>
+                        {component({ ...item })}
+                    </Fragment>
+                ))}
             </>
         );
     }
