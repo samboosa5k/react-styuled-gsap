@@ -1,28 +1,28 @@
-import {Layout}  from './layout';
-
 import { DummyList } from '@/modules';
+
+import { Layout } from './layout';
 
 function App() {
     return (
-        <Layout.Container>
+        <Layout.Page>
             <Layout.Sidebar>
-                <h4>SIDEBAR</h4>
+                <span>Sidebar</span>
                 <DummyList />
             </Layout.Sidebar>
             <Layout.Content>
-                <h5>Content area</h5>
+                <h1>Content area</h1>
                 <DummyList />
                 <DummyList />
                 <DummyList />
             </Layout.Content>
             <Layout.Header>
-                <h2>Header/branding etc</h2>
+                <span>Header/branding etc</span>
             </Layout.Header>
             <Layout.Navbar>
-                <p>I am the navbar</p>
+                <span>I am the navbar</span>
                 <button>I am a buton</button>
             </Layout.Navbar>
-        </Layout.Container>
+        </Layout.Page>
     );
 }
 

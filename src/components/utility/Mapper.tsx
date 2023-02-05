@@ -15,7 +15,7 @@ import {
 interface MapperProps {
     model: GenericObject;
     data: Array<MapperProps['model']>;
-    Comp: <T extends MapperProps['model']>(props: T) => JSX.Element;
+    Comp: <T extends any>(props: T) => JSX.Element;
 }
 
 /**
@@ -35,7 +35,10 @@ export const Mapper = ({ Comp, model, data }: MapperProps) => {
     const filteredData = useMemo(() => {
         return data.reduce((acc: [] | typeof model[], item) => {
             console.log('generic guard --> typeof model', typeof model);
-            console.log('generic guard --> is item',GenericGuard<typeof model>(item));
+            console.log(
+                'generic guard --> is item',
+                GenericGuard<typeof model>(item)
+            );
             if (!GenericGuard<typeof model>(item)) {
                 return acc;
             } else {

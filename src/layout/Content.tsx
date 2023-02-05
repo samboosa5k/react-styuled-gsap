@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 import { ContainerProps } from '@layout/types';
 
-const StyledContent = styled.main`
+import { GridArea } from './Grid';
+
+const StyledContent = styled(GridArea)`
     grid-area: content;
-    background-color: var(--gray-200);
 `;
 
 export const Content = ({ children }: ContainerProps) => {
     return (
-        <StyledContent className={`app-grid-content`}>{children}</StyledContent>
+        <StyledContent as="main" className={`app-grid-content`}>
+            {children}
+        </StyledContent>
     );
 };

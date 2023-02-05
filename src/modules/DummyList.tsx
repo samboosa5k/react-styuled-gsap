@@ -26,7 +26,8 @@ const data: Model[] = [
     },
 ];
 
-const ListItem = (props: Model) => <li>{JSON.stringify(props)}</li>;
+type Props = any;
+const ListItem = (props: Props) => <li>{props.keyString}</li>;
 
 export const DummyList: FC = () => (
     <ListContainer as="ul">

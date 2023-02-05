@@ -2,15 +2,18 @@ import styled from 'styled-components';
 
 import { ContainerProps } from '@layout/types';
 
-const StyledHeader = styled.header`
+import { GridArea } from './Grid';
+
+const StyledHeader = styled(GridArea)`
     grid-area: header;
     display: flex;
     flex-direction: row;
-    background-color: var(--teal);
 `;
 
 export const Header = ({ children }: ContainerProps) => {
     return (
-        <StyledHeader className={`app-grid-header`}>{children}</StyledHeader>
+        <StyledHeader as="header" className={`app-grid-header`}>
+            {children}
+        </StyledHeader>
     );
 };

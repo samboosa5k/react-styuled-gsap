@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 import { ContainerProps } from '@layout/types';
 
-const StyledNavbar = styled.header`
+import { GridArea } from './Grid';
+
+const StyledNavbar = styled(GridArea)`
     grid-area: navbar;
-    background-color: var(--teal);
 `;
 
 export const Navbar = ({ children }: ContainerProps) => {
     return (
-        <StyledNavbar className={`app-grid-navbar`}>{children}</StyledNavbar>
+        <StyledNavbar as="nav" className={`app-grid-navbar`}>
+            {children}
+        </StyledNavbar>
     );
 };

@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 import { ContainerProps } from '@layout/types';
 
-const StyledSidebar = styled.aside`
+import { GridArea } from './Grid';
+
+const StyledSidebar = styled(GridArea)`
     grid-area: sidebar;
-    background-color: var(--teal);
 `;
 
 export const Sidebar = ({ children }: ContainerProps) => {
     return (
-        <StyledSidebar className={`app-grid-sidebar`}>{children}</StyledSidebar>
+        <StyledSidebar as="aside" className={`app-grid-sidebar`}>
+            {children}
+        </StyledSidebar>
     );
 };
