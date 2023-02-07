@@ -1,6 +1,7 @@
 import { DummyList } from '@/modules';
-import { TableBlock } from './components/blocks/Table';
+import { DummyTable } from '@/modules/DummyTable';
 
+import { TableBlock } from './components/blocks/Table';
 import { Layout } from './layout';
 
 function App() {
@@ -12,9 +13,10 @@ function App() {
             </Layout.Sidebar>
             <Layout.Content>
                 <h1>Content area</h1>
-                <TableBlock/>
+                <TableBlock />
                 <DummyList />
                 <DummyList />
+                <DummyTable />
                 <DummyList />
             </Layout.Content>
             <Layout.Header>

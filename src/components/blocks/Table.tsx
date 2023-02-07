@@ -1,45 +1,44 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-
-const StyledTable = styled.table`
+export const StyledTable = styled.table`
     table-layout: fixed;
     width: 100%;
-`
+`;
 
-const StyledThead = styled.thead``
+export const THead = styled.thead``;
 
-const StyledTbody = styled.tbody``
+export const TBody = styled.tbody``;
 
-const TH = styled.th`
+export const Col = styled.th`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-`
+`;
 
-const Row = styled.tr`
+export const Row = styled.tr`
     display: flex;
-    padding: inherit 2em;
-`
+    padding: 1em 2em;
+`;
 
-const Cell = styled.td``
+export const Cell = styled.td``;
 
 export const TableBlock = () => (
     <StyledTable>
-        <StyledThead>
+        <THead>
             <Row>
-                <TH>Col 1: a th element with no wrap</TH>
-                <TH>Col 2</TH>
-                <TH>Col 3</TH>
-                <TH>Col 4</TH>
+                <Col>Col 1: a Col element with no wrap</Col>
+                <Col>Col 2</Col>
+                <Col>Col 3</Col>
+                <Col>Col 4</Col>
             </Row>
-        </StyledThead>
-        <StyledTbody>
+        </THead>
+        <TBody>
             <Row>
                 <Cell>Celll 1 just a test to see about padding</Cell>
                 <Cell>Cell 2</Cell>
                 <Cell>Cell 3</Cell>
                 <Cell>Cell 4</Cell>
             </Row>
-        </StyledTbody>
+        </TBody>
     </StyledTable>
 );
