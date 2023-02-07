@@ -1,4 +1,5 @@
 import { DummyList } from '@/modules';
+import { TableBlock } from './components/blocks/Table';
 
 import { Layout } from './layout';
 
@@ -11,6 +12,7 @@ function App() {
             </Layout.Sidebar>
             <Layout.Content>
                 <h1>Content area</h1>
+                <TableBlock/>
                 <DummyList />
                 <DummyList />
                 <DummyList />
