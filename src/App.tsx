@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
+
+import { pointsExample } from '@/utils/common';
+
 import { DummyList } from '@/modules';
 
 import { Layout } from './layout';
 
 function App() {
+    useEffect(() => {
+        console.log('points', { points: pointsExample() });
+    }, []);
     return (
         <Layout.Page>
             <Layout.Sidebar>
