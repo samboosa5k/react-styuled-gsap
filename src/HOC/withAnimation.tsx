@@ -1,48 +1,46 @@
-import { FC, ReactNode } from 'react';
+import { MutableRefObject, useCallback, useRef } from 'react';
 
-import { GenericObject, GenericStringObject } from '@/types/generic';
+const animIn = () => 1;
+const animOut = () => 1;
 
-import { ContainerProps } from '@layout/types';
+// const TransitionAnimation = (domRefs: HTMLElement[]) => {
+//     const [head, ...tail] = domRefs;
+//     if (domRefs.length === 0 || typeof head === 'undefined') {
+//         return false;
+//     }
+//     if (domRefs.length === 1) {
+//         console.log('LAST ONE', head);
+//         return TransitionAnimation([]);
+//     } else if (domRefs.length > 1) {
+//         console.log(`${domRefs.length} more refs to GO`, head);
+//         return TransitionAnimation(tail);
+//     }
+// };
 
-const transitionAnimation = (
-    animateIn: () => void,
-    animateOut: () => void
-) => ({ animateIn, animateOut });
+type TransitionIn = typeof animIn;
+type TransitionOut = typeof animOut;
 
-const animIn = () => {};
-const animOut = () => {};
-const withTransitionCallback = <P extends GenericObject>(props: P) => ({
-    ...transitionAnimation(animIn, animOut),
-    ...props,
-});
+const withTransition =
+    <FN extends TransitionIn, FN1 extends TransitionOut>(fn: FN, fn1?: FN1) =>
+    (
+        component: (
+            arg0: () => (() => number) | (() => undefined),
+            arg1: MutableRefObject<MutableRefObject<HTMLElement[]> | undefined>
+        ) => any
+    ) => {
+        const refArray = useRef<MutableRefObject<HTMLElement[]>>();
 
-type R = ReturnType<typeof withTransitionCallback>;
-type TransitionHOC = ContainerProps & GenericObject;
-const withTransition = (props: TransitionHOC) => {
-    return (_props: R = withTransitionCallback(props)) => <>{_props}</>;
-};
-//  (
-//     <>
-//         hello
-//     </>
-// )
+        const doTransition = useCallback(
+            () => (fn1 ? () => fn1() : fn ? () => fn() : () => undefined),
+            [fn, fn1]
+        );
 
-// }
+        return component(doTransition, refArray);
+    };
 
-interface SimpleComponentProps {
-    text: 'hello' | 'lorem' | 'children';
-    children: ReactNode;
-}
+const wrapTransitions = withTransition(animIn, animOut);
+export const Trans = wrapTransitions((arg) => (
+    <div onClick={arg}>'hwello'</div>
+));
 
-const simpleProps: TransitionHOC = {
-    text: 'hello',
-    children: <h1>jell</h1>,
-};
-const SimpleComponent = withTransition(simpleProps);
-// () =>
-//     <div>{(transitionAnimation(
-//         ()=>console.log('1'),
-//         ()=>console.log('2')
-//     ))}</div>)
-
-export { transitionAnimation };
+export { withTransition, wrapTransitions };
