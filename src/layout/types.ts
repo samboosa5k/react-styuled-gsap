@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { GenericChild } from '@/types/generic';
 
 import { GridDesktop, GridMobile } from './Grid';
 
-type ChildType = ReactNode;
+type ChildType = GenericChild;
 type ContainerProps = {
     children: ChildType;
 };
