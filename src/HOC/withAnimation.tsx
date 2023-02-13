@@ -1,7 +1,9 @@
-import { MutableRefObject, useCallback, useRef } from 'react';
+import { FC, MutableRefObject, useCallback, useRef } from 'react';
 
-const animIn = () => 1;
-const animOut = () => 1;
+import { GenericObjectKeyValue, GenericStringObject } from '@/types/generic';
+
+const animIn = () => undefined;
+const animOut = animIn;
 
 // const TransitionAnimation = (domRefs: HTMLElement[]) => {
 //     const [head, ...tail] = domRefs;
@@ -20,27 +22,41 @@ const animOut = () => 1;
 type TransitionIn = typeof animIn;
 type TransitionOut = typeof animOut;
 
-const withTransition =
-    <FN extends TransitionIn, FN1 extends TransitionOut>(fn: FN, fn1?: FN1) =>
-    (
-        component: (
-            arg0: () => (() => number) | (() => undefined),
-            arg1: MutableRefObject<MutableRefObject<HTMLElement[]> | undefined>
-        ) => any
-    ) => {
-        const refArray = useRef<MutableRefObject<HTMLElement[]>>();
+interface CurryProps {
+    refArray: MutableRefObject<HTMLElement[] | []>;
+    doTransition?: () => undefined;
+}
 
-        const doTransition = useCallback(
-            () => (fn1 ? () => fn1() : fn ? () => fn() : () => undefined),
-            [fn, fn1]
+interface CombinedProps {
+    [key: string]:
+        | CurryProps[keyof CurryProps]
+        | GenericObjectKeyValue
+        | GenericStringObject;
+}
+
+const withTransition = (fn: TransitionIn, fn1?: TransitionOut) => {
+    const refArray = useRef<HTMLElement[] | []>([]);
+
+    const doTransition = useCallback(() => undefined, [fn, fn1]);
+
+    return (
+        props: GenericStringObject,
+        component: FC<CombinedProps>
+    ): JSX.Element | null =>
+        component({ ...props, doTransition, refArray }) || null;
+};
+
+const wrapTransitions = withTransition(animIn, animOut)(
+    { text: '' },
+    (props) => {
+        return (
+            <span
+                onClick={() => props.doTransition}
+                id={props?.text?.toString() || 'id'}>
+                ehmpty
+            </span>
         );
-
-        return component(doTransition, refArray);
-    };
-
-const wrapTransitions = withTransition(animIn, animOut);
-export const Trans = wrapTransitions((arg) => (
-    <div onClick={arg}>'hwello'</div>
-));
+    }
+);
 
 export { withTransition, wrapTransitions };

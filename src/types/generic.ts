@@ -14,7 +14,9 @@ export type GenericSymbolObject = {
 };
 
 export type GenericFunction = <P extends unknown>(args?: P) => unknown;
-export type GenericObjectKeyValue = NonNullable<GenericValue | GenericFunction>;
+export type GenericObjectKeyValue = NonNullable<
+    GenericValue | GenericFunction | Array<GenericObjectKeyValue>
+>;
 
 export type GenericObject =
     | GenericStringObject
