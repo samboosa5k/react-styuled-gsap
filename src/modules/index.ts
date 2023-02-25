@@ -1,1 +1,2 @@
-export * from './DummyList';
+export { DummyList } from './DummyList';
+export { ComponentList } from './ComponentList';
