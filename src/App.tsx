@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { pointsExample } from '@/utils/common';
 
-import { DummyList } from '@/modules';
+import { ComponentList, DummyList } from '@/modules';
 
 import { Layout } from './layout';
 
@@ -18,6 +18,7 @@ function App() {
             </Layout.Sidebar>
             <Layout.Content>
                 <h1>Content area</h1>
+                <ComponentList />
                 <DummyList />
                 <DummyList />
                 <DummyList />
