@@ -26,10 +26,10 @@ export const componentMapper = <
     const uniq = useId();
     const filteredData = useMemo(() => {
         return data.reduce((acc: [] | typeof model[], item) => {
-            console.log(
-                'generic guard --> is item',
-                GenericGuard<typeof model>(item)
-            );
+            // console.log(
+            //     'generic guard --> is item',
+            //     GenericGuard<typeof model>(item)
+            // );
             if (!GenericGuard<typeof model>(item)) {
                 return acc;
             } else {

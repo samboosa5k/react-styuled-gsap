@@ -1,15 +1,9 @@
-import { useEffect } from 'react';
+import { ComponentList, DummyList, listDataArray } from '@/modules';
 
-import { pointsExample } from '@/utils/common';
-
-import { DummyList } from '@/modules';
-
+// import { CardFactoryExample } from '@/modules/CardFactoryExample';
 import { Layout } from './layout';
 
 function App() {
-    useEffect(() => {
-        console.log('points', { points: pointsExample() });
-    }, []);
     return (
         <Layout.Page>
             <Layout.Sidebar>
@@ -18,8 +12,10 @@ function App() {
             </Layout.Sidebar>
             <Layout.Content>
                 <h1>Content area</h1>
+                <ComponentList dataArray={listDataArray} />
                 <DummyList />
                 <DummyList />
+                {/*<CardFactoryExample />*/}
                 <DummyList />
             </Layout.Content>
             <Layout.Header>
