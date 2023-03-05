@@ -1,36 +1,51 @@
-import { useRef } from 'react';
+import gsap from 'gsap';
 
-import { X as Divvy, X } from '@/utils/namedJSX';
+import { FC, useEffect, useId, useRef } from 'react';
 
-interface RefArrayItem extends HTMLDivElement {}
+import { X as Child, X as Parent } from '@/utils/namedJSX';
 
-export const ComponentList = () => {
-    const refArray = useRef<RefArrayItem[]>();
-    const labels = ['label1', 'label2'];
+import { Card } from '@/components';
 
-    const refCallback = (elemRef: RefArrayItem, refArrayIndex?: number) => {
-        if (!refArray?.current) {
-            refArray.current = [];
-            refArray.current[0] = elemRef;
-        } else if (refArray.current && typeof refArrayIndex === 'number') {
-            refArray.current[refArrayIndex] = elemRef;
-        }
-        return elemRef;
-    };
+interface ComponentListProps {
+    dataArray: any[];
+}
+
+export const ComponentList: FC<ComponentListProps> = ({
+    dataArray,
+}): JSX.Element | null => {
+    const uniqueId = useId();
+    const parentRef = useRef<HTMLDivElement>();
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from('.random-class', 0.5, {
+                x: '100%',
+                scaleY: 0,
+                opacity: 0,
+                display: 'none',
+                stagger: 0.1,
+                delay: 0.2,
+            });
+        }, [parentRef]);
+        return () => {
+            ctx.revert();
+        };
+    }, []);
 
     return (
-        <Divvy
+        <Parent
             as="ul"
-            key="divvy-jsx"
-            refCallback={(parentRef) => refCallback(parentRef, 0)}>
-            {labels.map((labelItem: string, idx: number) => (
-                <X
-                    as="li"
-                    key={`divvy-jsx-child-${idx}`}
-                    refCallback={(childRef) => refCallback(childRef, idx + 1)}>
-                    {labelItem}
-                </X>
-            ))}
-        </Divvy>
+            ref={parentRef}
+            refCallback={(pRef) => (parentRef.current = pRef)}>
+            {dataArray?.length &&
+                dataArray.map((labelItem: any, idx: number) => (
+                    <Child
+                        as="li"
+                        className={'random-class'}
+                        key={`${uniqueId}-child-${idx}-X`}>
+                        <Card {...labelItem} />
+                    </Child>
+                ))}
+        </Parent>
     );
 };

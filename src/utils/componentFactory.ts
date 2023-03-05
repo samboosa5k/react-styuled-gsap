@@ -7,4 +7,6 @@ type D = P[];
 type C = FC<P>;
 
 export const componentFactory = (comp: C) => (data: D) =>
-    data.map((dataItem: P) => comp(dataItem));
+    data.map((dataItem: P, idx: number) =>
+        comp({ ...dataItem, arrayIdx: idx })
+    );
