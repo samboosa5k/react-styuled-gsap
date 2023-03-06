@@ -1,5 +1,6 @@
 import { ComponentList, DummyList, listDataArray } from '@/modules';
 
+import { Animator, testAnimation } from './HOC/Animator';
 // import { CardFactoryExample } from '@/modules/CardFactoryExample';
 import { Layout } from './layout';
 
@@ -12,10 +13,22 @@ function App() {
             </Layout.Sidebar>
             <Layout.Content>
                 <h1>Content area</h1>
-                <ComponentList dataArray={listDataArray} />
+                <Animator
+                    targetClassName="random-class"
+                    animationCallback={testAnimation}>
+                    <ComponentList dataArray={listDataArray} />
+                </Animator>
                 <DummyList />
                 <DummyList />
-                {/*<CardFactoryExample />*/}
+                <Animator
+                    parent={{ tag: 'div' }}
+                    child={{ tag: 'div' }}
+                    targetClassName="abc"
+                    animationCallback={testAnimation}>
+                    <p className="abc">Hello</p>
+                    <p className="abc">My name is</p>
+                    <p className="abc">Jaspeeeer</p>
+                </Animator>
                 <DummyList />
             </Layout.Content>
             <Layout.Header>

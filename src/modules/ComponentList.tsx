@@ -1,6 +1,5 @@
-import gsap from 'gsap';
-
-import { FC, useEffect, useId, useRef } from 'react';
+// import gsap from 'gsap';
+import { FC, useId, useRef } from 'react';
 
 import { X as Child, X as Parent } from '@/utils/namedJSX';
 
@@ -16,27 +15,24 @@ export const ComponentList: FC<ComponentListProps> = ({
     const uniqueId = useId();
     const parentRef = useRef<HTMLDivElement>();
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.random-class', 0.5, {
-                x: '100%',
-                scaleY: 0,
-                opacity: 0,
-                display: 'none',
-                stagger: 0.1,
-                delay: 0.2,
-            });
-        }, [parentRef]);
-        return () => {
-            ctx.revert();
-        };
-    }, []);
+    // useEffect(() => {
+    //     const ctx = gsap.context(() => {
+    //         gsap.from('.random-class', 0.5, {
+    //             x: '100%',
+    //             scaleY: 0,
+    //             opacity: 0,
+    //             display: 'none',
+    //             stagger: 0.1,
+    //             delay: 0.2,
+    //         });
+    //     }, [parentRef]);
+    //     return () => {
+    //         ctx.revert();
+    //     };
+    // }, []);
 
     return (
-        <Parent
-            as="ul"
-            ref={parentRef}
-            refCallback={(pRef) => (parentRef.current = pRef)}>
+        <Parent as="ul" refCallback={(pRef) => (parentRef.current = pRef)}>
             {dataArray?.length &&
                 dataArray.map((labelItem: any, idx: number) => (
                     <Child
