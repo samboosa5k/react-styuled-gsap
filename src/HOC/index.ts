@@ -1,1 +1,1 @@
-export {}
+export { Animator } from './Animator';

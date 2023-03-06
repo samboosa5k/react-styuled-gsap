@@ -2,6 +2,7 @@ import {
     createElement,
     DetailedHTMLProps,
     ReactNode,
+    useCallback,
     useEffect,
     useRef,
 } from 'react';
@@ -16,8 +17,15 @@ export const X = (props: XElementParams) => {
     const { children, as, refCallback, ...otherProps } = props;
     const xRef = useRef<HTMLDivElement>();
 
+    const callbackRef = useCallback(
+        () =>
+            refCallback && xRef.current ? refCallback(xRef.current) : () => {},
+        [refCallback]
+    );
+
     useEffect(() => {
-        if (refCallback && xRef.current) refCallback(xRef.current);
-    }, [refCallback]);
+        callbackRef();
+    }, [callbackRef]);
+
     return createElement(as, { ref: xRef, ...otherProps }, children);
 };
