@@ -1,1 +1,1 @@
-export { Animator } from './Animator';
+export * from './Animator';

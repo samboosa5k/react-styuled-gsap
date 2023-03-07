@@ -2,6 +2,7 @@ import gsap from 'gsap';
 
 import { FC, ReactNode, useEffect, useRef } from 'react';
 
+import { prependString } from '@/utils';
 import { X as AnimateWrapper } from '@/utils/namedJSX';
 
 interface AnimatorProps {
@@ -14,26 +15,6 @@ interface AnimatorProps {
     ) => void;
     children: ReactNode;
 }
-
-export const testAnimation = (targetClassName: string) => {
-    console.log('targetClassname', targetClassName);
-    gsap.from(targetClassName, 0.5, {
-        x: '100%',
-        opacity: 0,
-        stagger: 0.1,
-        delay: 0.2,
-        repeat: -1,
-    }).yoyo(true);
-};
-
-const prependString = (stringTarget: string, stringToPrepend: string) => {
-    const isAlreadyPrepended = new RegExp(`/^${stringToPrepend}.+/`).test(
-        stringTarget
-    );
-    return !isAlreadyPrepended
-        ? `${stringToPrepend}${stringTarget}`
-        : stringTarget;
-};
 
 export const Animator: FC<AnimatorProps> = ({
     tag,

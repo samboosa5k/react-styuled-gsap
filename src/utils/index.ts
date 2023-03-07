@@ -1,5 +1,5 @@
 export { componentMapper } from './componentMapper';
 export { componentFactory } from './componentFactory';
-export { pointsExample } from './common';
+export { createBezierCoordinates, createBezierValues } from './common';
 export { X } from './namedJSX';
-export { isNumber, isDefined } from './helpers';
+export { isNumber, isDefined, prependString } from './helpers';
