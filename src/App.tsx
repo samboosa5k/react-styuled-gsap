@@ -1,9 +1,16 @@
+import { useEffect } from 'react';
+
+import { sineWavePoints } from '@/utils';
+
 import { ComponentList, DummyList, listDataArray } from '@/modules';
 
 import { Animator, slideInOutAnimation, upDownAnimation } from './HOC';
 import { Layout } from './layout';
 
 function App() {
+    useEffect(() => {
+        console.log(sineWavePoints(10));
+    }, []);
     return (
         <Layout.Page>
             <Layout.Sidebar>

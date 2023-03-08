@@ -15,3 +15,11 @@ export const prependString = (
         ? `${stringToPrepend}${stringTarget}`
         : stringTarget;
 };
+
+/**
+ * @author djD-REK
+ * @description Using exponential notation to prevent rounding errors
+ * Link:https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
+ */
+export const roundDecimal = (decimal: number) => (floatValue: number) =>
+    parseFloat(`${Math.round(Number(`${floatValue}e${decimal}`))}e-${decimal}`);
