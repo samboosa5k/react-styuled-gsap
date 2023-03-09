@@ -1,4 +1,4 @@
 export { DummyList } from './DummyList';
-export { ComponentList } from './ComponentList';
+export { ComponentList, List } from './ComponentList';
 export { CardFactoryExample } from './CardFactoryExample';
 export * from './reduceArray';

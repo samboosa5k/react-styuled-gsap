@@ -1,16 +1,14 @@
 import gsap from 'gsap';
 
-import { FC, ReactNode, useEffect, useRef } from 'react';
+import { FC, ReactNode, useCallback, useEffect, useRef } from 'react';
 
 import { prependString } from '@/utils';
 import { X as AnimateWrapper } from '@/utils/namedJSX';
 
 interface AnimatorProps {
     tag?: keyof JSX.IntrinsicElements;
-    parent?: { tag: AnimatorProps['tag']; classNames?: string[] };
-    child?: { tag: AnimatorProps['tag']; classNames?: string[] };
     targetClassName: string | string[];
-    animationCallback: (
+    animationCallback?: (
         animateTargetClassName: AnimatorProps['targetClassName']
     ) => void;
     children: ReactNode;
@@ -24,16 +22,24 @@ export const Animator: FC<AnimatorProps> = ({
 }) => {
     const parentRef = useRef<HTMLDivElement>();
 
+    const animate = useCallback(
+        (arg0: AnimatorProps['targetClassName']) =>
+            arg0 && animationCallback ? animationCallback(arg0) : null,
+        [animationCallback]
+    );
+
     useEffect(() => {
-        const classNameWithDot = Array.isArray(targetClassName)
-            ? targetClassName.map((name) => prependString(name, '.'))
-            : prependString(targetClassName, '.');
+        const classNameWithDot = targetClassName
+            ? Array.isArray(targetClassName)
+                ? targetClassName.map((name) => prependString(name, '.'))
+                : prependString(targetClassName, '.')
+            : null;
         const ctx = gsap.context(() => {
-            animationCallback(classNameWithDot);
+            classNameWithDot && animate(classNameWithDot);
         }, [parentRef]);
 
         return () => ctx.revert();
-    }, [targetClassName, animationCallback]);
+    }, [targetClassName, animate]);
 
     return (
         <AnimateWrapper

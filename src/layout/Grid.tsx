@@ -16,8 +16,8 @@ export const GridMobile = css`
 export const GridDesktop = css`
     grid-template-areas:
         'header navbar navbar navbar'
-        'sidebar content content content'
-        'sidebar content content content'
+        'sidebar content content rightbar'
+        'sidebar content content rightbar'
         'footer footer footer footer';
     grid-row-gap: var(--spacing-lg);
     grid-column-gap: var(--spacing-lg);
@@ -37,7 +37,5 @@ export const Grid = styled.div<GridTemplateProps>`
 export const GridArea = styled.div`
     position: relative;
     padding: var(--spacing-lg);
-    //outline: dashed 1px var(--orange);
-    //outline-offset: calc(var(--spacing-lg) * -1);
     background: var(--gray-200);
 `;

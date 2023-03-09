@@ -34,18 +34,26 @@ const addTimeline = (tl: gsap.core.Timeline, classString: string, x: number) =>
         scale: 1.5,
         repeat: -1,
     });
-export const timelineAnimation = (targetClassNameSequence: string[]) => {
-    const tl = gsap.timeline({
-        duration: 0.1,
-        repeat: -1,
-        yoyo: true,
-        repeatDelay: 0.05,
-        repeatRefresh: true,
+
+export const staggerAnimation = (targetClassNames: string | string[]) => {
+    const tl = gsap.timeline();
+    return tl.to(targetClassNames, 0.5, {
+        x: '100%',
+        duration: 0.5,
+        stagger: {
+            each: 0.1,
+            from: 0,
+            repeat: -1,
+            yoyo: true,
+        },
     });
+};
+
+export const timelineAnimation = (targetClassNameSequence: string[]) => {
     const sinePoints = sineWavePoints(targetClassNameSequence.length);
     return targetClassNameSequence.reduce(
-        (ttl = tl, classString, i: number) =>
-            addTimeline(ttl, classString, (i + 1) * (sinePoints[i] * 100)),
-        tl
+        (tl, classString, i: number) =>
+            addTimeline(tl, classString, (i + 1) * (sinePoints[i] * 100)),
+        gsap.timeline()
     );
 };
