@@ -1,2 +1,6 @@
-export { slideInOutAnimation, upDownAnimation } from './animations';
+export {
+    slideInOutAnimation,
+    upDownAnimation,
+    timelineAnimation,
+} from './animations';
 export { Animator } from './Animator';

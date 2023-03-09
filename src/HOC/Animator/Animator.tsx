@@ -9,7 +9,7 @@ interface AnimatorProps {
     tag?: keyof JSX.IntrinsicElements;
     parent?: { tag: AnimatorProps['tag']; classNames?: string[] };
     child?: { tag: AnimatorProps['tag']; classNames?: string[] };
-    targetClassName: string;
+    targetClassName: string | string[];
     animationCallback: (
         animateTargetClassName: AnimatorProps['targetClassName']
     ) => void;
@@ -25,7 +25,9 @@ export const Animator: FC<AnimatorProps> = ({
     const parentRef = useRef<HTMLDivElement>();
 
     useEffect(() => {
-        const classNameWithDot = prependString(targetClassName, '.');
+        const classNameWithDot = Array.isArray(targetClassName)
+            ? targetClassName.map((name) => prependString(name, '.'))
+            : prependString(targetClassName, '.');
         const ctx = gsap.context(() => {
             animationCallback(classNameWithDot);
         }, [parentRef]);

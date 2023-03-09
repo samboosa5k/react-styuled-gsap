@@ -11,13 +11,11 @@ const calculateCircleY = (radius: number) => (radians: number) =>
 const getCirclePoint = (radius: number) => (degrees: number) =>
     calculateCircleY(radius)(calculateRadians(degrees));
 
-const circle10 = getCirclePoint(10);
-
 const sineWavePoints = (count: number, points: number[] = []): number[] | [] =>
     points.length < count
         ? sineWavePoints(count, [
               ...points,
-              roundDecimal(3)(90 * circle10(count - points.length / count)),
+              getCirclePoint(1)(90 * ((count - points.length) / count)),
           ])
         : points;
 

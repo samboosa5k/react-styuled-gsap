@@ -1,10 +1,16 @@
+//@ts-nocheck
 import { useEffect } from 'react';
 
 import { sineWavePoints } from '@/utils';
 
 import { ComponentList, DummyList, listDataArray } from '@/modules';
 
-import { Animator, slideInOutAnimation, upDownAnimation } from './HOC';
+import {
+    Animator,
+    slideInOutAnimation,
+    timelineAnimation,
+    upDownAnimation,
+} from './HOC';
 import { Layout } from './layout';
 
 function App() {
@@ -33,9 +39,32 @@ function App() {
                     </>
                 </Animator>
                 <Animator
+                    targetClassName={[
+                        'target-1',
+                        'target-2',
+                        'target-3',
+                        'target-4',
+                        'target-5',
+                    ]}
+                    animationCallback={timelineAnimation}>
+                    <>
+                        <p className="target-1">Hello</p>
+                        <p className="target-2">My name is</p>
+                        <p className="target-3">Jaspeeeer</p>
+                        <p className="target-4">Jaspeeeer</p>
+                        <p className="target-5">Jaspeeeer</p>
+                    </>
+                </Animator>
+                <Animator
                     targetClassName="random-class"
                     animationCallback={slideInOutAnimation}>
-                    <ComponentList dataArray={listDataArray} />
+                    <ComponentList
+                        dataArray={[
+                            listDataArray[0],
+                            listDataArray[2],
+                            listDataArray[3],
+                        ]}
+                    />
                 </Animator>
                 {/*<DummyList />*/}
                 {/*<DummyList />*/}
