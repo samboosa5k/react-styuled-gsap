@@ -15,4 +15,6 @@ module.exports = createWebpackAliases({
     '@/components': 'src/components',
     '@/modules': 'src/modules',
     '@/layout': 'src/layout',
+    '@/pages': 'src/pages',
+    '@/HOC': 'src/HOC',
 });

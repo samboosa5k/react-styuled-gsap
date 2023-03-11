@@ -27,7 +27,8 @@ export const Grid = styled.div<GridTemplateProps>`
     position: absolute;
     inset: 0;
     display: grid;
-    grid-auto-columns: auto;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
     grid-auto-rows: minmax(min-content, max-content);
     box-sizing: border-box;
     background-color: var(--gray-800);
