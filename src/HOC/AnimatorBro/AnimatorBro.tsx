@@ -1,49 +1,51 @@
-import gsap from 'gsap';
+// import gsap from 'gsap';
+import {
+    createContext,
+    FC,
+    ReactNode,
+    useCallback,
+    useContext,
+    useRef,
+} from 'react';
 
-import { 
-	FC, ReactNode, useCallback, 
-useRef } from 'react';
+// import { X as AnimateWrapper } from '@/utils/namedJSX';
 
-import { X as AnimateWrapper } from '@/utils/namedJSX';
-
-interface IAnimatorBroContext {
-    parentRef: MutableRefObject<HTMLDivElement>;
-    childRefs: MutableRefObject<HTMLDivDlement[] | []>;
-    addToChildRefs: (elem: HTMLDivElement) => void;
-    getChildRefs: () => IAnimatorBroContext['childRefs'];
-    children?: ReactNode;
+export interface IAnimatorBroContext {
+    parentRef?: HTMLDivElement | null;
+    childRefs?: HTMLDivElement[] | [] | null;
+    addToChildRefs?: (elem: HTMLDivElement) => void;
+    getChildRefs?: () => HTMLDivElement[] | [] | undefined;
 }
 
-const AnimatorBroContext: IAnimatorBroContext = {
-    parentRef: null;
-    childRefs: null;
-    addToChildRefs: () => {};
-    getChildRefs: () => {};
-}
+const AnimatorBroContext = createContext<IAnimatorBroContext>({});
 
-export const useAnimatorBroContext => useContext(AnimatorBroContext);
- 
-export const Animator: FC<AnimatorProps> = ({
+export const useAnimatorBroContext = () => useContext(AnimatorBroContext);
+
+export const AnimatorBroProvider: FC<{ children: ReactNode }> = ({
     // animationCallback,
-    // children,
+    children,
 }) => {
-    const parentRef = useRef<IAnimatorBroContext['parentRef']>();
-    const childRefs = useRef<IAnimatorBroContext['childRefs']>();
+    const parentRef = useRef<IAnimatorBroContext['parentRef']>(undefined);
+    const childRefs = useRef<IAnimatorBroContext['childRefs']>([]);
 
-    const addToChildRefs = useCallback((elem: HTMLDivElement) =>
-	elem 
-		? childRefs.current = [[...childRefs?.current || [], elem]
-		: [elem]
-	, []);
+    const addToChildRefs = useCallback(
+        (elem: HTMLDivElement) =>
+            elem && childRefs?.current
+                ? (childRefs.current = [...(childRefs?.current || []), elem])
+                : [elem],
+        []
+    );
 
     const getChildRefs = useCallback(() => childRefs?.current || [], []);
 
     return (
         <AnimatorBroContext.Provider
-		value={{
-			parentRef, childRefs, addToChildRefs, getChildRefs
-	>
-            
+            value={{
+                parentRef: parentRef?.current,
+                childRefs: childRefs?.current,
+                addToChildRefs,
+                getChildRefs,
+            }}>
             {children}
         </AnimatorBroContext.Provider>
     );
