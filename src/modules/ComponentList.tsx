@@ -10,7 +10,7 @@ interface ComponentListProps {
 }
 
 interface ListProps extends ComponentListProps {
-    refCallback?: (el: HTMLDivElement) => void;
+    refCallback?: (el: HTMLDivElement, i: number) => void;
 }
 export const List: FC<ListProps> = memo(function ListMemo({
     dataArray,
@@ -26,7 +26,7 @@ export const List: FC<ListProps> = memo(function ListMemo({
                             as="li"
                             className={'random-class'}
                             refCallback={(ref) =>
-                                refCallback && refCallback(ref)
+                                refCallback && refCallback(ref, idx)
                             }
                             key={`${uniqueId}-child-${idx}-X`}>
                             <Card {...labelItem} />
