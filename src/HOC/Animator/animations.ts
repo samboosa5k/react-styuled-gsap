@@ -5,7 +5,8 @@ import { gsap } from 'gsap';
 
 import { sineWavePoints } from '@/utils';
 
-export const slideInOutAnimation = (targetClassName: string) => {
+type ClassArg = string | string[];
+export const slideInOutAnimation = (targetClassName: ClassArg) => {
     console.log('targetClassname', targetClassName);
     gsap.from(targetClassName, 0.5, {
         x: '20%',
@@ -16,7 +17,7 @@ export const slideInOutAnimation = (targetClassName: string) => {
     }).yoyo(true);
 };
 
-export const upDownAnimation = (targetClassName: string) => {
+export const upDownAnimation = (targetClassName: ClassArg) => {
     console.log('targetClassname', targetClassName);
     gsap.from(targetClassName, 0.25, {
         y: '100%',
@@ -35,7 +36,7 @@ const addTimeline = (tl: gsap.core.Timeline, classString: string, x: number) =>
         repeat: -1,
     });
 
-export const staggerAnimation = (targetClassNames: string | string[]) => {
+export const staggerAnimation = (targetClassNames: ClassArg) => {
     const tl = gsap.timeline();
     return tl.to(targetClassNames, 0.5, {
         x: '100%',

@@ -21,7 +21,6 @@ export const Animator: FC<AnimatorProps> = ({
     children,
 }) => {
     const parentRef = useRef<HTMLDivElement>();
-
     const animate = useCallback(
         (arg0: AnimatorProps['targetClassName']) =>
             arg0 && animationCallback ? animationCallback(arg0) : null,
@@ -45,6 +44,7 @@ export const Animator: FC<AnimatorProps> = ({
         <AnimateWrapper
             as={tag || 'div'}
             refCallback={(cbRef) => (parentRef.current = cbRef)}>
+            {/*@ts-ignore*/}
             {children}
         </AnimateWrapper>
     );
