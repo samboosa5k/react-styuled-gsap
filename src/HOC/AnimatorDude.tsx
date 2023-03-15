@@ -1,57 +1,83 @@
 import { gsap } from 'gsap';
 
-import { FC, ReactNode, useEffect, useRef } from 'react';
+import { FC, ReactNode, useCallback, useEffect, useRef } from 'react';
 
-interface IAnimatorParent {
+/**
+ * Please find it in your hearts to overlook the excessive use of
+ * nulls & any & undefineds in this file.
+ * I'm in the process of cleaning up.
+ */
+
+type AnimationFN = (
+    elem: HTMLDivElement | HTMLDivElement[],
+    tl: gsap.core.Timeline
+) => void;
+
+// Parent --> Receives magic data
+interface IAnimationProps {
+    animationIN?: AnimationFN;
+    animationOUT?: AnimationFN;
+    data?: { [key: string]: any };
+}
+// Parent --> Gives cool stuff to Children
+interface IAnimatorParent extends IAnimationProps {
+    children: (
+        props: IAnimatorDude & IAnimationProps['data']
+    ) => ReactNode | null;
+}
+
+// Chuldren --> Gets cool stuff from Parent
+interface IAnimatorDude {
     parentRef?: HTMLDivElement | null;
     childRefs?: HTMLDivElement[] | [] | null;
     addToChildRefs?: (elem: HTMLDivElement, i: number) => void;
     getChildRefs?: () => HTMLDivElement[] | [] | undefined;
 }
 
-interface IAnimatorDude {
-    // children: (props: { [key: string]: any }) => ReactNode | null;
-    children: (props: IAnimatorParent) => ReactNode | null;
-}
-
-export const AnimatorDude: FC<IAnimatorDude> = ({ children }) => {
-    const parentRef = useRef<IAnimatorParent['parentRef']>(undefined);
-    const childRefs = useRef<IAnimatorParent['childRefs']>([]);
+export const AnimatorDude: FC<IAnimatorParent> = ({
+    animationIN,
+    animationOUT,
+    data,
+    children,
+}) => {
+    // Refs: Dom Elements
+    const parentRef = useRef<IAnimatorDude['parentRef']>(undefined);
+    const childRefs = useRef<IAnimatorDude['childRefs']>([]);
 
     const addToChildRefs = (elem: HTMLDivElement, i: number) =>
         elem && childRefs?.current
             ? (childRefs.current[i] = elem)
             : (childRefs.current = [elem]);
 
-    const getChildRefs = () => childRefs?.current || [];
+    const getChildRefs = useCallback(
+        () => childRefs?.current || [],
+        [childRefs]
+    );
 
     useEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({});
-            childRefs?.current &&
-                tl
-
-                    .to(childRefs.current, {
-                        y: '10%',
-                        scale: 0.9,
-                        opacity: 0,
-                        duration: 0.5,
-                        delay: 0.5,
-                        stagger: {
-                            each: 0.1,
-                            from: 0,
-                            repeat: -1,
-                            yoyo: true,
-                        },
-                    })
-                    .yoyo(true);
+            if (childRefs?.current) {
+                tl.from(childRefs.current, 0.5, {
+                    ...animationIN, // FIXME: this
+                    // naming is garbage
+                }).to(childRefs.current, 0.5, {
+                    ...animationOUT, // FIXME: this
+                    // naming is garbage
+                });
+            }
+            tl.yoyo(true);
         }, [childRefs]);
-        return () => ctx.revert();
-    }, [childRefs]);
+
+        return () => {
+            ctx.revert();
+        };
+    }, [data, animationIN, animationOUT]);
 
     return (
         <>
             {children({
+                data,
                 parentRef: parentRef?.current,
                 childRefs: childRefs?.current,
                 addToChildRefs,
