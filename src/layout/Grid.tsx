@@ -19,13 +19,15 @@ export const GridDesktop = css`
         'sidebar content content rightbar'
         'sidebar content content rightbar'
         'footer footer footer footer';
-    grid-row-gap: var(--spacing-lg);
-    grid-column-gap: var(--spacing-lg);
+    //grid-row-gap: var(--spacing-lg);
+    //grid-column-gap: var(--spacing-lg);
+    grid-row-gap: 0;
+    grid-column-gap: 0;
 `;
 
 export const Grid = styled.div<GridTemplateProps>`
-    position: absolute;
-    inset: 0;
+    position: relative;
+    //inset: 0;
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;

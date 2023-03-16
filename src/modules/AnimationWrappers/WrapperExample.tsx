@@ -1,4 +1,4 @@
-import { AnimatorDude, staggerRefs, staggerRefsFade } from '@/HOC';
+import { AnimatorWrapper, staggerRefs, staggerRefsFade } from '@/HOC';
 
 import { useMemo, useState } from 'react';
 
@@ -6,17 +6,17 @@ import { List, listDataArray } from '@/modules';
 
 const INCREMENT = 5;
 
-export const HOCPage = () => {
+export const WrapperExample = () => {
     const [range, setRange] = useState({
         start: 0,
         end: INCREMENT,
     });
-    const [animOut, setAnimOut] =
+    const [animation, setAnimation] =
         useState<typeof staggerRefsFade | typeof staggerRefs>();
 
     // TODO: dry this out, it is too wet.
     const handleIncrement = () => {
-        setAnimOut(staggerRefsFade);
+        setAnimation(staggerRefsFade);
         setRange({
             start:
                 range.start + INCREMENT < listDataArray.length - INCREMENT
@@ -31,7 +31,7 @@ export const HOCPage = () => {
 
     // TODO: dry this out, it is too wet.
     const handleDecrement = () => {
-        // setAnimOut(staggerRefsFade);
+        setAnimation(staggerRefs);
         setRange({
             start: range.start - INCREMENT > 0 ? range.start - INCREMENT : 0,
             end:
@@ -51,8 +51,8 @@ export const HOCPage = () => {
 
     // What would Jesus do if he saw this code?
     return (
-        <AnimatorDude
-            animationIN={animOut}
+        <AnimatorWrapper
+            animationIN={animation}
             animationOUT={staggerRefs}
             data={dataFilter}>
             {({
@@ -70,6 +70,6 @@ export const HOCPage = () => {
                     <List refCallback={addToChildRefs} dataArray={data} />
                 </>
             )}
-        </AnimatorDude>
+        </AnimatorWrapper>
     );
 };

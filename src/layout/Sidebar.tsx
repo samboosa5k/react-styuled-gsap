@@ -6,6 +6,7 @@ import { GridArea } from './Grid';
 
 const StyledSidebar = styled(GridArea)`
     grid-area: sidebar;
+    visibility: hidden;
 `;
 
 const StyledRightBar = styled(StyledSidebar)`

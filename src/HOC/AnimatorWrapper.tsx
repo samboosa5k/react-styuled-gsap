@@ -20,29 +20,29 @@ interface IAnimationProps {
     data?: { [key: string]: any };
 }
 // Parent --> Gives cool stuff to Children
-interface IAnimatorParent extends IAnimationProps {
+interface IAnimatorWrapper extends IAnimationProps {
     children: (
-        props: IAnimatorDude & IAnimationProps['data']
+        props: IAnimatorWrapperChildren & IAnimationProps['data']
     ) => ReactNode | null;
 }
 
 // Chuldren --> Gets cool stuff from Parent
-interface IAnimatorDude {
+interface IAnimatorWrapperChildren {
     parentRef?: HTMLDivElement | null;
     childRefs?: HTMLDivElement[] | [] | null;
     addToChildRefs?: (elem: HTMLDivElement, i: number) => void;
     getChildRefs?: () => HTMLDivElement[] | [] | undefined;
 }
 
-export const AnimatorDude: FC<IAnimatorParent> = ({
+export const AnimatorWrapper: FC<IAnimatorWrapper> = ({
     animationIN,
     animationOUT,
     data,
     children,
 }) => {
     // Refs: Dom Elements
-    const parentRef = useRef<IAnimatorDude['parentRef']>(undefined);
-    const childRefs = useRef<IAnimatorDude['childRefs']>([]);
+    const parentRef = useRef<IAnimatorWrapperChildren['parentRef']>(undefined);
+    const childRefs = useRef<IAnimatorWrapperChildren['childRefs']>([]);
 
     const addToChildRefs = (elem: HTMLDivElement, i: number) =>
         elem && childRefs?.current
@@ -66,7 +66,6 @@ export const AnimatorDude: FC<IAnimatorParent> = ({
                     // naming is garbage
                 });
             }
-            tl.yoyo(true);
         }, [childRefs]);
 
         return () => {

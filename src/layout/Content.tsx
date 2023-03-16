@@ -6,6 +6,7 @@ import { GridArea } from './Grid';
 
 const StyledContent = styled(GridArea)`
     grid-area: content;
+    background-color: transparent;
 `;
 
 export const Content = ({ children }: ContainerProps) => {

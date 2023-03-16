@@ -33,7 +33,7 @@
             "@/utils/*": ["./src/utils/*"],
         }
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*","svgmodule.d.ts"],
     "exclude": [
         "node_modules",
         "public",

@@ -1,12 +1,12 @@
 export const staggerRefs = () => {
     return {
-        x: '100%',
-        duration: 0.5,
+        scale: 0.5,
+        duration: 0.2,
         stagger: {
             each: 0.1,
             from: 0,
-            repeat: -1,
-            yoyo: true,
+            // repeat: -1,
+            // yoyo: true,
         },
     };
 };

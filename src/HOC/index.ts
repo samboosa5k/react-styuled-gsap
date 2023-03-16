@@ -1,4 +1,4 @@
 export * from './Animator';
 export * from './AnimatorBro';
-export * from './AnimatorDude';
-export * from './animationDudes';
+export * from './AnimatorWrapper';
+export * from './animationsForWrapper';

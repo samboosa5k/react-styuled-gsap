@@ -6,12 +6,9 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 //
 // import { Animator, upDownAnimation } from './HOC';
 import { Layout } from './layout';
-import { HOCPage, Home, StyledPage } from './pages';
+import { Home, Presentation, StyledPage } from './pages';
 
 function App() {
-    // useEffect(() => {
-    //     console.log(sineWavePoints(10));
-    // }, []);
     return (
         <Router>
             <Layout.Page>
@@ -35,8 +32,11 @@ function App() {
                     <Routes>
                         <Route path="/" element={<h1>Hello</h1>} />
                         <Route path="/styled" element={<StyledPage />} />
-                        <Route path="/hoc" element={<HOCPage />} />
                         <Route path="/gsap" element={<Home />} />
+                        <Route
+                            path="/presentation"
+                            element={<Presentation />}
+                        />
                     </Routes>
                 </Layout.Content>
                 <Layout.Header>
@@ -48,6 +48,7 @@ function App() {
                     <Link to="/styled">Styled</Link>
                     <Link to="/hoc">HOC</Link>
                     <Link to="/gsap">Gsap</Link>
+                    <Link to="/presentation">Presentation</Link>
                 </Layout.Navbar>
             </Layout.Page>
         </Router>
