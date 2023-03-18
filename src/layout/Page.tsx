@@ -1,4 +1,9 @@
-import { Grid, GridDesktop } from './Grid';
+import {
+    Grid,
+    GridDesktop,
+    /* GridDesktop */
+    // GridMobile,
+} from './Grid';
 import { ContainerProps } from './types';
 
 export const Page = ({ children }: ContainerProps) => {

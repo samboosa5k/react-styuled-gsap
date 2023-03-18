@@ -6,28 +6,24 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 //
 // import { Animator, upDownAnimation } from './HOC';
 import { Layout } from './layout';
-import { Home, Presentation, StyledPage } from './pages';
+import { ComponentPage, Home, Presentation, StyledPage } from './pages';
 
 function App() {
     return (
         <Router>
+            <Layout.Navbar>
+                <span>I am the navbar</span>
+                <Link to="/">Home</Link>
+                <Link to="/styled">Styled</Link>
+                <Link to="/hoc">HOC</Link>
+                <Link to="/gsap">Gsap</Link>
+                <Link to="/presentation">Presentation</Link>
+                <Link to="/components">Components</Link>
+            </Layout.Navbar>
             <Layout.Page>
                 <Layout.Sidebar>
-                    <span>Sidebar</span>
-                    {/*<Animator*/}
-                    {/*    targetClassName="list-item"*/}
-                    {/*    animationCallback={upDownAnimation}>*/}
-                    {/*    <DummyList />*/}
-                    {/*</Animator>*/}
-                </Layout.Sidebar>{' '}
-                <Layout.RightBar>
-                    <span>Sidebar</span>
-                    {/*<Animator*/}
-                    {/*    targetClassName="list-item"*/}
-                    {/*    animationCallback={upDownAnimation}>*/}
-                    {/*    <DummyList />*/}
-                    {/*</Animator>*/}
-                </Layout.RightBar>
+                    <></>
+                </Layout.Sidebar>
                 <Layout.Content>
                     <Routes>
                         <Route path="/" element={<h1>Hello</h1>} />
@@ -37,19 +33,12 @@ function App() {
                             path="/presentation"
                             element={<Presentation />}
                         />
+                        <Route path="/components" element={<ComponentPage />} />
                     </Routes>
                 </Layout.Content>
-                <Layout.Header>
-                    <span>Header/branding etc</span>
-                </Layout.Header>
-                <Layout.Navbar>
-                    <span>I am the navbar</span>
-                    <Link to="/">Home</Link>
-                    <Link to="/styled">Styled</Link>
-                    <Link to="/hoc">HOC</Link>
-                    <Link to="/gsap">Gsap</Link>
-                    <Link to="/presentation">Presentation</Link>
-                </Layout.Navbar>
+                <Layout.RightBar>
+                    <></>
+                </Layout.RightBar>
             </Layout.Page>
         </Router>
     );

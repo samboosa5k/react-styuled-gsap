@@ -31,7 +31,7 @@ export const Grid = styled.div<GridTemplateProps>`
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
-    grid-auto-rows: minmax(min-content, max-content);
+    // grid-auto-rows: minmax(0, 1fr);
     box-sizing: border-box;
     background-color: var(--gray-800);
     ${({ grid }) => (grid === GridDesktop ? GridDesktop : GridMobile)}

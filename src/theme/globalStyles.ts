@@ -33,16 +33,17 @@ export const GlobalStyle = createGlobalStyle<ThemeProps>`
         text-align: var(--body-text-align);
         -webkit-text-size-adjust: 100%;
         -webkit-tap-highlight-color: transparent;
-            height: 100vh;
-    
+        height: 100vh;
+        margin: 0;
     }
+    
     #root {
         height: 100%;
     }
 
     .app-grid-page {
-            width:100%;
-            height:100%;
+        width:100%;
+        height:100%;
     }
 
     h1,
