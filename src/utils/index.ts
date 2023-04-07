@@ -1,4 +1,3 @@
-export { componentMapper } from './componentMapper';
 export { componentFactory } from './componentFactory';
 export { createBezierCoordinates, createBezierValues } from './bezier';
 export { sineWavePoints } from './sine';

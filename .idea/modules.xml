@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/react-styled-gsap.iml" filepath="$PROJECT_DIR$/.idea/react-styled-gsap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/react-styuled-gsap.iml" filepath="$PROJECT_DIR$/.idea/react-styuled-gsap.iml" />
     </modules>
   </component>
 </project>
