@@ -1,4 +1,4 @@
-import { Card, ExportedCard } from './Card';
+import { Card, CardComponent } from './Card';
 
 export default {
     title: 'Card',
@@ -7,4 +7,4 @@ export default {
 
 export const Default = () => Card(<h1>Example</h1>)
 
-export const ResultCard = () => <ExportedCard/>
+export const ResultCard = ()=> Card(CardComponent)

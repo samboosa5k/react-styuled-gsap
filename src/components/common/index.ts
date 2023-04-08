@@ -1,1 +1,1 @@
-export { Card, ExportedCard } from './Card'
+export { Card, CardComponent } from './Card'
