@@ -16,6 +16,10 @@ const StyledCard = styled.div`
         border-radius: 0.5em;
         //border: 1px solid rgba(0, 0, 0, 0.1);
     }
+  
+    .card-header, .card-content {
+      margin: auto auto 1em auto;
+    }
 `;
 
 const StyledTitle = styled.h1``;
@@ -26,12 +30,28 @@ const StyledTimestamp = styled.span`
     color: rgba(0, 0, 0, 0.25);
 `;
 
-const StyledHeader = styled.header``;
+const StyledHeader = styled.header`
+`;
 
 const StyledContent = styled(StyledCard)`
     text-align: justify;
     background-color: rgba(10, 22, 55, 0.1);
 `;
+
+const StyledControls = styled.span`
+  display: block;
+  width: fit-content;
+  margin: auto 0 auto auto;
+  
+  .button-submit {
+    background-color: rgba(10, 200, 55, 0.25);
+  }
+  
+  .button-edit {
+    margin-left: 0.5em;
+    background-color: rgba(10, 22, 200, 0.25);
+  }
+`
 
 // COMPONENTS
 export const Card = (child?: JSX.Element) => (
@@ -44,23 +64,23 @@ const Title = (child: string) => <StyledTitle>{child}</StyledTitle>;
 const Timestamp = (child: string) => <StyledTimestamp>{child}</StyledTimestamp>;
 
 const Header = () => (
-    <StyledHeader>
+    <StyledHeader className="card-header">
         {Title('Title')}
         {Timestamp('00:00 hrs')}
     </StyledHeader>
 );
 
 const Content = () => (
-    <StyledContent>
+    <StyledContent className="card-content">
         {Timestamp('I am some test content...bahhhhh!')}
     </StyledContent>
 );
 
 const ButtonControls = () => (
-    <>
-        <StyledCard as="button">Submit</StyledCard>
-        <StyledCard as="button">Edit</StyledCard>
-    </>
+    <StyledControls>
+        <StyledCard className="button-submit" as="button">Submit</StyledCard>
+        <StyledCard className="button-edit" as="button">Edit</StyledCard>
+    </StyledControls>
 );
 
 // FUNCTIONAL COMPONENTS
