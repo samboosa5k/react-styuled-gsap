@@ -5,6 +5,6 @@ export default {
     component: Card
 }
 
-export const Default = () => Card(<h1>Example</h1>)
+export const Default = () => Card(<h1>Example</h1>);
 
-export const ResultCard = ()=> Card(CardComponent)
+export const ResultCard = ()=> Card(CardComponent);
