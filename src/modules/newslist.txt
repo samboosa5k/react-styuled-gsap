@@ -1,3 +1,0 @@
-Source:
-=======
-https://api.voetbalprimeur.nl/domain/1/news?scope=public&page=2&perPage=20&checkNextPage=true&newsStatus=published&newsCatID=29

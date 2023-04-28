@@ -43,10 +43,13 @@
       <option name="TERNARY_OPERATION_WRAP" value="5" />
       <option name="ARRAY_INITIALIZER_WRAP" value="5" />
       <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+      <option name="WRAP_ON_TYPING" value="1" />
       <option name="SOFT_MARGINS" value="80" />
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
-      <option name="SOFT_MARGINS" value="80" />
+      <option name="RIGHT_MARGIN" value="90" />
+      <option name="WRAP_ON_TYPING" value="1" />
+      <option name="SOFT_MARGINS" value="100" />
     </codeStyleSettings>
     <codeStyleSettings language="Vue">
       <option name="SOFT_MARGINS" value="80" />

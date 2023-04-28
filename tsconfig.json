@@ -1,43 +1,74 @@
 {
-    "compilerOptions": {
-        "module": "esnext",
-        "target": "ES6",
-        "lib": ["ES6", "DOM", "DOM.Iterable", "esnext"],
-        "strict": true,
-        "isolatedModules": true,
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "allowSyntheticDefaultImports": true,
-        "allowJs": true,
-        "forceConsistentCasingInFileNames": true,
-        "noFallthroughCasesInSwitch": true,
-        "resolveJsonModule": true,
-        "noEmit": true,
-        "jsx": "react-jsx",
-        "outDir": "public",
-        "baseUrl": ".",
-        "paths": {
-            "*": ["./node_modules/*"],
-            "@/*": ["./src/*"],
-            "@src/*": ["./src/*"],
-            "@/HOC/*": ["./src/HOC/*"],
-            "@/components/*": ["./src/components/*"],
-            "@/layout/*": ["./src/layout/*"],
-            "@/modules/*": ["./src/modules/*"],
-            "@/pages/*": ["./src/pages/*"],
-            "@/theme/*": ["./src/theme/*"],
-            "@/types/*": ["./src/types/*"],
-            "@/utils/*": ["./src/utils/*"],
-        }
-    },
-    "include": ["src/**/*","svgmodule.d.ts"],
-    "exclude": [
-        "node_modules",
-        "public",
-        "src/stories/**/*",
-        "**/*.stories.tsx"
-    ]
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES6",
+    "lib": [
+      "ES6",
+      "DOM",
+      "DOM.Iterable",
+      "esnext"
+    ],
+    "strict": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "outDir": "public",
+    "baseUrl": "../react-styuled-gsap",
+    "paths": {
+      "*": [
+        "./node_modules/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+      "@src/*": [
+        "./src/*"
+      ],
+      "@/HOC/*": [
+        "./src/HOC/*"
+      ],
+      "@/components/*": [
+        "./src/components/*/*"
+      ],
+      "@/layout/*": [
+        "./src/layout/**/*"
+      ],
+      "@/modules/*": [
+        "./src/modules/**/*"
+      ],
+      "@/pages/*": [
+        "./src/pages/**/*"
+      ],
+      "@/theme/*": [
+        "./src/theme/**/*"
+      ],
+      "@/types/*": [
+        "./src/types/**/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/**/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "apps/**/*",
+    "svgmodule.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "public",
+    "src/stories/**/*",
+    "**/*.stories.tsx"
+  ]
 }

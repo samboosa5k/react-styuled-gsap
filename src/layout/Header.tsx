@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ContainerProps } from '@/layout/types';
+import { ContainerProps } from './types';
 
 import { GridArea } from './Grid';
 

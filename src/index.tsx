@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+import { VerbonApp } from '../apps/VerbonApp';
 
-import App from './App';
-import { borders, colors, GlobalStyle, spacing, typography } from './theme';
+// const lazyApp =(arg:string) => lazy(() => import(`../apps/${arg}`))
+//
+// const APP_NAME = 'VerbonApp';
+const APP = VerbonApp;
+
 
 const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement,
 );
 root.render(
     <React.StrictMode>
-        <GlobalStyle
-            colors={colors}
-            borders={borders}
-            spacing={spacing}
-            typography={typography}
-        />
-        <App />
-    </React.StrictMode>
+        <Suspense fallback={<h1>Loading...</h1>}>
+            <APP />
+        </Suspense>
+    </React.StrictMode>,
 );
