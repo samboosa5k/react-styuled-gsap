@@ -1,5 +1,22 @@
 import tommy_portret from '../src/assets/tommy_portret.png';
-import { Photo, ClickPhoto } from '@shared/components/Photo';
+import { ClickPhoto, Photo } from '@shared/components/Photo';
+import { useState } from 'react';
+
+const abc = (a: number) => ClickPhoto({
+    src: tommy_portret, ...{
+        key: `tommy_key-2${a}`,
+        alt: 'Tommy',
+        id: 'Tommy-2',
+    },
+});
+
+const testFunc = () => {
+    const [state, setState] = useState<JSX.Element[]>([<span key='abn'>aasdfgas</span>]);
+    console.log('state', state.length)
+    return <p key={`${state.length}_key`}
+              onClick={() => setState([...state, abc(state.length)])}>hello{[...state]}</p>;
+};
+
 
 export const VerbonApp = () => {
     return (
@@ -17,8 +34,11 @@ export const VerbonApp = () => {
                     key: 'tommy_key-2',
                     alt: 'Tommy',
                     id: 'Tommy-2',
-                }
+                },
             })}
+            {
+                testFunc()
+            }
         </div>
     );
 };
