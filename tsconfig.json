@@ -34,36 +34,44 @@
       "@src/*": [
         "./src/*"
       ],
+      "@shared/*": [
+        "./shared/*"
+      ],
       "@/HOC/*": [
         "./src/HOC/*"
       ],
       "@/components/*": [
-        "./src/components/*/*"
+        "./src/components/*"
+      ],
+      "@shared/components/*": [
+        "./shared/components/*"
       ],
       "@/layout/*": [
-        "./src/layout/**/*"
+        "./src/layout/*"
       ],
       "@/modules/*": [
-        "./src/modules/**/*"
+        "./src/modules/*"
       ],
       "@/pages/*": [
-        "./src/pages/**/*"
+        "./src/pages/*"
       ],
       "@/theme/*": [
-        "./src/theme/**/*"
+        "./src/theme/*"
       ],
       "@/types/*": [
-        "./src/types/**/*"
+        "./src/types/*"
       ],
       "@/utils/*": [
-        "./src/utils/**/*"
+        "./src/utils/*"
       ]
     }
   },
   "include": [
     "src/**/*",
     "apps/**/*",
-    "svgmodule.d.ts"
+    "shared/**/*",
+    "svgmodule.d.ts",
+    "pngmodule.d.ts",
   ],
   "exclude": [
     "node_modules",

@@ -10,6 +10,8 @@ const { createWebpackAliases } = require('./webpack.helpers');
 module.exports = createWebpackAliases({
     '@apps': 'apps',
     '@assets': 'assets',
+    '@shared': 'shared',
+    '@shared/components': 'shared/components',
     '@src': 'src',
     '@/types': 'src/types',
     '@/utils': 'src/utils',
