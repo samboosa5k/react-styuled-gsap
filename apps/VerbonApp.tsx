@@ -1,44 +1,38 @@
-import tommy_portret from '../src/assets/tommy_portret.png';
+import { MappedText } from '@shared/components/MappedText';
 import { ClickPhoto, Photo } from '@shared/components/Photo';
-import { useState } from 'react';
 
-const abc = (a: number) => ClickPhoto({
-    src: tommy_portret, ...{
-        key: `tommy_key-2${a}`,
-        alt: 'Tommy',
-        id: 'Tommy-2',
-    },
-});
+import tommy_portret from '../src/assets/tommy_portret.png';
 
-const testFunc = () => {
-    const [state, setState] = useState<JSX.Element[]>([<span key='abn'>aasdfgas</span>]);
-    console.log('state', state.length)
-    return <p key={`${state.length}_key`}
-              onClick={() => setState([...state, abc(state.length)])}>hello{[...state]}</p>;
-};
+const YEARS = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
 
+const clickHandler = (data: unknown) => console.log(data)
+const TextMap = (textArr: string[] | number[]) =>
+    textArr.map((text, index) =>
+        MappedText(text, `${text}-${index}`)({
+            onClick: ()=>clickHandler(text),
+        }));
 
 export const VerbonApp = () => {
     return (
         <div>
             <h1>Verbon</h1>
             {Photo({
-                src: tommy_portret, ...{
+                src: tommy_portret,
+                ...{
                     key: 'tommy_key',
                     alt: 'Tommy',
                     id: 'Tommy',
                 },
             })}
             {ClickPhoto({
-                src: tommy_portret, ...{
+                src: tommy_portret,
+                ...{
                     key: 'tommy_key-2',
                     alt: 'Tommy',
                     id: 'Tommy-2',
                 },
             })}
-            {
-                testFunc()
-            }
+            {TextMap(YEARS)}
         </div>
     );
 };

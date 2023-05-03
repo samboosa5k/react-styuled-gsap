@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91dc7e33-b385-4d11-ab01-9377bc69ec23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/shared/components/MappedText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/VerbonApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/VerbonApp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/components/Photo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/shared/components/Photo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/shared/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/shared/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;project/setup-fork&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jasper/_WEB/react-styuled-gsap&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/jasper/_WEB/react-styuled-gsap/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/jasper/_WEB/react-styuled-gsap/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "project/setup-fork",
+    "last_opened_file_path": "/home/jasper/_WEB/react-styuled-gsap",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/home/jasper/_WEB/react-styuled-gsap/node_modules/prettier",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "/home/jasper/_WEB/react-styuled-gsap/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -74,7 +80,8 @@
       <workItem from="1682877136357" duration="1575000" />
       <workItem from="1682959481192" duration="622000" />
       <workItem from="1682960116877" duration="8704000" />
-      <workItem from="1682973927019" duration="1624000" />
+      <workItem from="1682973927019" duration="1983000" />
+      <workItem from="1683137634880" duration="4723000" />
     </task>
     <servers />
   </component>

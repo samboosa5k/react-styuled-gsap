@@ -1,1 +1,1 @@
-export {Photo, ClickPhoto} from './Photo'
+export {Photo, ClickPhoto} from './Photo';
