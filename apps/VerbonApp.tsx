@@ -5,12 +5,25 @@ import tommy_portret from '../src/assets/tommy_portret.png';
 
 const YEARS = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
 
-const clickHandler = (data: unknown) => console.log(data)
-const TextMap = (textArr: string[] | number[]) =>
+type ClickFn = (data: any) => void;
+const clickHandler: ClickFn = (data: unknown) => console.log(data);
+
+// TextMap with Click
+// Temporary onClick example
+const TextMap = (textArr: string[] | number[]) => (onClick: ClickFn) =>
     textArr.map((text, index) =>
-        MappedText(text, `${text}-${index}`)({
-            onClick: ()=>clickHandler(text),
-        }));
+        MappedText(
+            text,
+            `${text}-${index}`
+        )({
+            onClick,
+        })
+    );
+
+const withClick = (
+    fn: (onClick: ClickFn) => JSX.Element | JSX.Element[],
+    clickHandler: ClickFn
+) => fn(clickHandler);
 
 export const VerbonApp = () => {
     return (
@@ -32,7 +45,7 @@ export const VerbonApp = () => {
                     id: 'Tommy-2',
                 },
             })}
-            {TextMap(YEARS)}
+            {withClick(TextMap(YEARS), clickHandler)}
         </div>
     );
 };
